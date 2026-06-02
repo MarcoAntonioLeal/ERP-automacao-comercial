@@ -1,0 +1,124 @@
+body {
+    font-weight: bold;
+}    
+  
+
+   /*====Barra de Navegacao====*/
+.navbar{
+    background-color: var(--cor-01);
+    font-weight: bold;
+}
+
+.home-hover {
+    border-radius: var(--radius);
+    transition-duration: .3s;
+
+    &:hover {
+        background-color: var(--cor-02);
+        border-radius: var(--radius);
+        transition-duration: .3s;
+    }
+}
+
+.dropdown {border-right: 2px solid var(--cor-04);}
+
+.dropdown-item:hover{
+    background-color: var(--cor-04);
+    transition-duration: .3s;
+}
+
+.btn-fechar-sistema {
+    border-radius: var(--radius);
+    padding: 0 0.7rem;
+    background-color: var(--cor-02);
+
+    &:hover {
+        background-color: var(--cor-02); 
+    }
+}
+
+    
+    /*====Valor de Vendas====*/
+#sec-valor-venda {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    max-width: 80%;
+    height: 8rem;
+    margin-top: 5rem;
+    padding: 0 2rem;
+    border-radius: var(--radius);
+    font-size: larger;
+    transition-duration: .7s;
+
+    &:hover {
+        box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+        transition-duration: .7s;
+    }
+}
+
+.btn-group {
+    width: 5rem;
+    margin-top: 1rem;
+}
+
+#vendas {
+    display: flex;
+    justify-content: space-between;
+}
+
+#vl-vendas {color: var(--cor-05);}
+
+
+    /*====Modulos====*/
+.sec-cards {
+    font-size: x-large;
+    margin-bottom: 3rem;
+}
+
+.cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cards > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 18rem;
+    height: 12rem;
+    border-radius: var(--radius);
+    transition-duration: .5s;
+
+    &:hover {
+        box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+        transition-duration: .5s;
+    }
+    
+    &:hover > .card-icon {
+        background-color: var(--cor-09);
+        transition-duration: .5s;
+    }
+}
+
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--radius);
+    background-color: var(--cor-04);
+    transition-duration: .5s;
+}
+
+.card-text {
+    align-self: flex-end;
+    margin-right: 1rem;
+}
+
+#pdv {color: var(--cor-05);}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meus Produtos</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/configGerais.css">
+    <link rel="stylesheet" href="../css/produtos.css">
+</head>
+<body>
+    <main class="container-fluid">
+        
+        <section id="sec-menu">
+            <a href="./criarProduto.html" class="borda">
+                <img src="../img/novo-produto.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Novo
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+            
+            <!--botão modal pesquisar-->
+            <button type="button" class="borda" id="btnPesquisar" data-bs-toggle="modal" data-bs-target="#staticPesquisar">
+                <img src="../img/pesquisar.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Pesquisar
+                </div>
+            </button>
+
+            <!--modal pesquisar-->
+            <div class="modal fade" id="staticPesquisar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticPesquisarLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4 modal-header-title" id="staticPesquisarLabel">Filtros</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body modal-body-pesquisar">
+                            <div class="modal-filtro-de-busca">
+                                <div>
+                                    <input type="radio" name="busca-produto" id="todosProdutos" checked>
+                                    <label for="todosProdutos">Todos os produtos</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="estoquePositivo">
+                                    <label for="estoquePositivo">Produtos com estoque positivo</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="estoqueZerado">
+                                    <label for="estoqueZerado">Produtos com estoque zerado</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="estoqueNegativo">
+                                    <label for="estoqueNegativo">Produtos com estoque negativo</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="inativos">
+                                    <label for="inativos">Produtos inativos</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="nuncaVendidos">
+                                    <label for="nuncaVendidos">Produtos que nunca foram vendidos</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="seteDiasVender">
+                                    <label for="seteDiasVender">Produtos com mais de 7 dias s/vender</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="trintaDiasVender">
+                                    <label for="trintaDiasVender">Produtos com mais de 30 dias s/vender</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-produto" id="sessentaDiasVender">
+                                    <label for="sessentaDiasVender">Produtos com mais de 60 dias s/vender</label>
+                                </div>
+                            </div>
+
+                            <hr>
+                            
+                            <div class="modal-busca-grupo-fornecedor">
+
+                                <div>
+                                    
+                                    <label for="buscaGrupo">Informe o Grupo:</label>
+                                    <br>
+                                    <select name="buscaGrupo" id="buscaGrupo">
+                                        <option value="" disabled selected></option>
+                                        <option value="">grupo 1</option>
+                                        <option value="">grupo 2</option>
+                                    </select>
+
+                                    <button type="button" class="btn btn-sm" data-btn-apagar="grupo">
+                                        X
+                                    </button>
+
+                                    <br>
+
+                                    <label for="buscaFornecedor">Informe o Fornecedor:</label>
+                                    <br>
+                                    <select name="buscaFornecedor" id="buscaFornecedor">
+                                        <option value="" disabled selected></option>
+                                        <option value="">Fornecedor 1</option>
+                                        <option value="">Fornecedor 2</option>
+                                    </select>
+
+                                    <button type="button" class="btn btn-sm" data-btn-apagar="fornecedor">
+                                        X
+                                    </button>
+                                </div>
+
+                                <div class="modal-order-filtro">
+                                    <div>
+                                        <input type="radio" name="order-filtro" id="filtroPorCodigo" checked>
+                                        <label for="filtroPorCodigo">Filtro por código</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="order-filtro" id="filtroPorAlfabetica">
+                                        <label for="filtroPorAlfabetica">Filtro por ordem alfabética</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="order-filtro" id="filtroPorEstoque">
+                                        <label for="filtroPorEstoque">Filtro por quantidade de estoque</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                Aplicar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="linha-vertical">
+
+            <a href="#" class="borda">
+                <img src="../img/baixar-pdf.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Baixar PDF
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+
+            <a href="./index.html" class="borda">
+                <img src="../img/pag-inicial.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Pg. Inicial
+                </div>
+            </a>
+
+            <div class="input-group busca-produto">
+
+                <input type="text" class="form-control borda" placeholder="Nome do produto" aria-label="button-clear" aria-describedby="button-clear" id="campoPesquisarProduto">
+
+                <button class="btn btn-outline-danger" type="button" id="button-clear" data-btn-apagar="buscaProduto">
+                    X
+                </button>
+            </div>
+            
+        </section>
+
+        <section class="sec-table ">
+            <table class="table table-bordered table-striped table-primary border-secondary">
+
+                <thead>
+                    <tr class="table-secondary">
+                        <th id="width-descricao">Descrição</th>
+                        <th id="width-codigo">Código</th>
+                        <th id="width-estoque">Estoque</th>
+                        <th id="width-vend-hoje">Vend. Hoje</th>
+                        <th id="width-dias-vendes">Dias s/ Vender</th>
+                        <th id="width-custo">Custo</th>
+                        <th id="width-valor">Valor</th>
+                        <th id="width-editar">
+                            <img src="../img/lapis.svg" alt="" class="icon-xs">
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!--linha de molde-->
+                    <tr>
+                        <td class="descricao-prod">Meu primeiro produto</td>
+                        <td>1</td>
+                        <td>15</td>
+                        <td>1</td>
+                        <td>60</td>
+                        <td>9,50</td>
+                        <td>29,90</td>
+
+                        <td class="table-active table-warning">
+                            <a href="./criarProduto.html">
+                                <img src="../img/lapis.svg" alt="" class="icon-xs">
+                            </a>
+                        </td>
+                    </tr>
+                    <!--linha de molde-->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <img src="../img/logo.svg" alt="Logo" class="icon-m me-2"> 
+        <span class="fs-4 text-logo">Say-System</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="../js/produtos.js"></script>
+</body>
+</html>

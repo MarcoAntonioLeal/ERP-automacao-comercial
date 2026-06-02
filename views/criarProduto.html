@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Novo Produto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/configGerais.css">
+    <link rel="stylesheet" href="../css/criarProduto.css">
+</head>
+<body>
+     <main class="container">
+        
+        <section id="sec-menu">
+            <button type="button" class="borda btn-menu btn-novo" data-btn-menu="novo">
+                <img src="../img/novo-produto.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Novo
+                </div>
+            </button>
+
+            <hr class="linha-vertical">
+
+            <button type="button" class="borda btn-menu btn-salvar" data-btn-menu="salvar">
+                <img src="../img/salvar.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Salvar
+                </div>
+            </button>
+
+            <hr class="linha-vertical">
+
+            <!--botão modal p/ confimar a exclusão-->
+            <button type="button" class="borda btn-menu btn-excluir" data-btn-menu="excluir"
+            data-bs-toggle="modal"
+            data-bs-target="#staticExcluir">
+                <img src="../img/excluir.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Excluir
+                </div>
+            </button>
+
+            <!--modal p/ confimar a exclusão-->
+            <div class="modal fade" id="staticExcluir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalExcluir" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+
+                        <div class="modal-body text-start" id="modalExcluir">
+                            Deseja mesmo excluir esse produto ?
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-sm" data-bs-dismiss="modal" data-confirma="true">
+                                Confirmar
+                            </button>
+
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                                Voltar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="linha-vertical">
+
+            <a href="./produtos.html" class="borda btn-voltar">
+                <img src="../img/voltar.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Voltar
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+
+            <a href="./index.html" class="borda btn-pag-incial">
+                <img src="../img/pag-inicial.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Pg. Inicial
+                </div>
+            </a>
+        </section>
+
+        <section class="container sec-cadastro borda style-padrao">
+            <form action="#" class="formCriarProduto">
+                <fieldset>
+                    <legend>Produto</legend>
+                    
+                    <div class="codigo-e-status">
+                        <div>
+                            <label for="codigo">Código:</label>
+                            <input type="text" name="codigo" class="disabled" id="codigo" readonly>
+                        </div>
+
+                        <div class="form-check form-switch status">
+                            <input class="form-check-input" type="checkbox" role="switch" id="ativo-inativo" checked>
+                            <label class="form-check-label" for="ativo-inativo">Ativo</label>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <label for="descricao">Descrição:</label>
+                        <input type="text" name="descricao" id="descricao" autocomplete="off" maxlength="55" required>
+                            
+                        <label for="cod-barras" class="ms-4">Código de Barras:</label>
+                        <input type="text" name="cod-barras" id="cod-barras" autocomplete="off" maxlength="13" pattern="\d+" title="Digite apenas números">
+                    </div>
+
+                    <hr>
+
+                    <div class="preco-e-custo py-3">
+                        <label for="estoque">Estoque:</label>
+                        <input type="text" name="estoque" id="estoque" autocomplete="off" 
+                        maxlength="6" 
+                        required pattern="\d+([.,]\d{1,2})?" 
+                        title="Números inteiros ou com no máximo duas casas decimais">
+
+                        <label for="custo" class="ms-4">Custo:</label>
+                        <input type="text" name="custo" id="custo" autocomplete="off" 
+                        maxlength="5" 
+                        pattern="\d+([.,]\d{1,2})?" 
+                        title="Números inteiros ou com no máximo duas casas decimais">
+
+                        <label for="precoPorcento" class="ms-4">Preço em % :</label>
+                        <input type="text" name="precoPorcento" id="precoPorcento" autocomplete="off" 
+                        data-preco = "porcento"
+                        maxlength="5" 
+                        pattern="\d+([.,]\d{1,2})?" 
+                        title="Números inteiros ou com no máximo duas casas decimais">
+
+                        <label for="preco" class="ms-4">Preço:</label>
+                        <input type="text" name="preco" id="preco" autocomplete="off" 
+                        data-preco="valor"
+                        maxlength="5" 
+                        required pattern="\d+([.,]\d{1,2})?" 
+                        title="Números inteiros ou com no máximo duas casas decimais">
+                    </div>
+                
+                    <hr>
+
+                    <div class="grupo-unidade-venda">
+
+                        <div class="grupo-unidade-venda">
+
+                            <label for="grupo">Grupos:</label>
+                            <input list="grupos" name="grupo" id="grupo" autocomplete="off">
+                            <datalist id="grupos">
+                                <option value="blusas"></option>
+                                <option value="bolsas"></option>
+                            </datalist>
+
+                            <!--botão modal para criacao de grupo-->
+                            <button type="button" 
+                            class="btn btns-criar-apagar btn-criar tooltip-criar-grupo"
+                            data-bs-toggle="modal"
+                             
+                            data-bs-target="#staticGrupo"
+                            data-bs-placement="top" 
+                            data-bs-title="criar novo grupo">
+
+                                <img src="../img/+.svg" alt="" class="icon-xs">
+
+                            </button> 
+
+                            <!-- Modal para criar novo grupo--> 
+                            <div class="modal fade" id="staticGrupo" 
+                            data-bs-backdrop="static" 
+                            data-bs-keyboard="false" 
+                            tabindex="-1" 
+                            aria-labelledby="grupoLabel" 
+                            aria-hidden="true">
+                                
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-4" id="grupoLabel">
+                                                Grupos
+                                            </h1>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            <!--Modal Menu-->
+                                            <section id="sec-modal-menu">
+
+                                                <button type="button" class="borda btn-novo-grupo btn-menu-grupo" data-btn-menu-grupo="novo">
+                                                    <img src="../img/grupo.svg" alt="" class="icon-s">
+
+                                                    <div>
+                                                        <hr>
+                                                        Novo
+                                                    </div>
+                                                </button>
+
+                                                <hr class="linha-modal-vertical">
+
+                                                 <button type="button" class="borda btn-cancelar-grupo btn-menu-grupo" data-btn-menu-grupo="cancelar">
+                                                    <img src="../img/cancelar.svg" alt="" class="icon-s">
+
+                                                    <div>
+                                                        <hr>
+                                                        Cancelar
+                                                    </div>
+                                                </button>
+
+                                                <hr class="linha-modal-vertical">
+
+                                                <button type="button" class="borda btn-salvar-grupo btn-menu-grupo" data-btn-menu-grupo="salvar">
+                                                    <img src="../img/salvar.svg" alt="" class="icon-s">
+
+                                                    <div>
+                                                        <hr>
+                                                        Salvar
+                                                    </div>
+                                                </button>
+
+                                                <hr class="linha-modal-vertical">
+
+                                                <button type="button" class="borda btn-excluir-grupo btn-menu-grupo" data-btn-menu-grupo="excluir">
+                                                    <img src="../img/excluir.svg" alt="" class="icon-s">
+
+                                                    <div>
+                                                        <hr>
+                                                        Excluir
+                                                    </div>
+                                                </button>
+                                            </section>   
+                                        </div>
+
+                                        <div class="modal-footer footer-modal-grupo">
+                                            <section>
+                                                <input type="text" name="nomeGrupo" id="nomeGrupo" autocomplete="off" maxlength="18">
+                                            </section>
+
+                                            <section class="sec-modal-table">
+                                                <table class="table table-hover table-bordered border-primary">
+                                                    <!--linha de molde-->
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="grupo-value" class="grupo">
+                                                        </td>
+                                                        <td class="id-td">01</td>
+                                                        <td class="nome-td">grupo 1</td>
+                                                    </tr>
+                                                    <!--linha de molde-->
+
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="grupo-value" class="grupo">
+                                                        </td>
+                                                        <td class="id-td">02</td>
+                                                        <td class="nome-td">grupo 2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="grupo-value" class="grupo">
+                                                        </td>
+                                                        <td class="id-td">03</td>
+                                                        <td class="nome-td">grupo 3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="grupo-value" class="grupo">
+                                                        </td>
+                                                        <td class="id-td">04</td>
+                                                        <td class="nome-td">grupo 4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="grupo-value" class="grupo">
+                                                        </td>
+                                                        <td class="id-td">05</td>
+                                                        <td class="nome-td">grupo 5</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="grupo-unidade-venda">
+
+                            <label for="unidadeVenda" class="ms-4">Unidade Venda:</label>
+                            <select name="unidadeVenda" id="unidadeVenda">
+                                <option value="" selected disabled></option>
+                                <option value="un">un</option>
+                                <option value="pc">kg</option>
+                                <option value="kg">l</option>
+                                <option value="ml">ml</option>
+                                <option value="m">m</option>
+                            </select>
+
+                            <button type="button" class="btn btns-criar-apagar btn-apagar">
+
+                                <img src="../img/x.svg" alt="" class="icon-xs">
+
+                            </button>
+                        </div>
+                        
+                        <label for="fornecedor" class="ms-4">Fornecedor:</label>
+                        <input type="text" name="fornecedor" id="fornecedor" autocomplete="off">
+                        
+                    </div>
+
+                    <br>
+                
+                    <div>
+                        <label for="obsProduto" class="mt-2">Observações do produto:</label>
+                        <br>
+                        <textarea name="obsProduto" id="obsProduto" maxlength="100" rows="3" cols="50"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+     </main>
+
+     <footer>
+        <img src="../img/logo.svg" alt="Logo" class="icon-m me-2"> 
+        <span class="fs-4 text-logo">Say-System</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+
+    <script src="../js/criarProduto.js"></script>
+</body>    

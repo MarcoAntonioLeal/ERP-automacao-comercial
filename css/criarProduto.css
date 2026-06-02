@@ -1,0 +1,232 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: medium;
+}
+
+/*====Menu====*/
+#sec-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+
+    width: 80%;
+    margin-top: 1rem;
+
+    & img {
+        margin: auto;
+    }
+}
+
+.linha-vertical { 
+    width: 1px; 
+    height: 100px; 
+    background-color: var(--cor-11); 
+    border: none; 
+}
+
+#sec-menu > button, #sec-menu > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: var(--radius);
+    background-color: var(--cor-00);
+    box-shadow: 3px 3px 3px var(--cor-shadow);
+    font-size: 1.02rem;
+    color: inherit;
+    transition-duration: .5s;
+
+    &:hover {
+    box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+    transition-duration: .5s;
+    }
+
+    & hr {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+.btn-novo:hover, .btn-novo-grupo:hover {background-color: var(--cor-06) !important;}
+.btn-salvar:hover, .btn-salvar-grupo:hover {background-color: var(--cor-09) !important;}
+.btn-excluir:hover, .btn-excluir-grupo:hover {background-color: var(--cor-07) !important;}
+.btn-cancelar:hover, .btn-cancelar-grupo:hover {background-color: var(--cor-10) !important;}
+.btn-voltar:hover {background-color: var(--cor-04) !important;}
+.btn-pag-incial:hover {background-color: var(--cor-04) !important;}
+
+
+/*====Inputs====*/
+.sec-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    min-height: 50vh;
+    margin: 1rem 0 2.5rem 0;
+    transition-duration: .5s;
+    border-radius: var(--radius);
+    
+    &:hover {
+        box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+        transition-duration: .5s;
+    }
+
+    & legend {
+        color: var(--cor-05);
+        font-weight: bold;
+    }
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+input, select {
+    outline: none;
+    padding: 4px;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+.codigo-e-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & #codigo {
+        width: 5rem;
+        font-weight: bolder;
+        color: var(--cor-11);
+    }
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    margin-right: 2rem;
+    
+    & #ativo-inativo{
+        width: 3rem;
+        height: 1.5rem;
+    }
+}
+
+input#descricao {width: 30rem;}
+
+.preco-e-custo > input, select {
+    width: 5rem;
+}
+
+.grupo-unidade-venda {
+    display: flex; 
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    & .btns-criar-apagar {
+        display: inherit;
+        justify-content: center;
+        align-items: inherit;
+        width: 1.8rem;
+        height: 1.8rem;
+
+        &.btn-criar {background-color: var(--cor-06);}
+        &.btn-apagar {background-color: var(--cor-07);}
+    }
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+/*====Modal para criar novo grupo====*/
+.modal {
+    color: inherit;
+}
+
+.modal-title {
+    color: var(--cor-05);
+    font-weight: bold;
+}
+
+#sec-modal-menu {
+    display: flex;
+    gap: 1.3rem;
+
+    & img {
+        margin: auto;
+    }
+}
+
+.linha-modal-vertical { 
+    width: 1px; 
+    height: 50px;
+    margin: 0;
+    background-color: var(--cor-11);  
+    border: none; 
+}
+
+#sec-modal-menu > button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 3.7rem;
+    width: 3.7rem;
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 3px var(--cor-shadow);
+    font-size: 0.825rem;
+    color: inherit;
+    transition-duration: .5s;
+
+    &:hover {
+    box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+    transition-duration: .5s;
+    }
+
+    & hr {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+.footer-modal-grupo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: inherit;
+}
+
+.footer-modal-grupo > input {
+    width: 13rem;
+    padding: 2px;
+    text-transform: uppercase;
+}
+
+.sec-modal-table {
+    width: 65%;
+    max-height: 13rem;
+    border: 1px solid var(--cor-04);
+    text-align: center;
+    overflow-y: auto;
+}
+
+td {
+    width: 6rem;
+    color: inherit !important;
+
+    &.id-td{width: 15%;}
+    &.nome-td{width: 85%;}
+}
