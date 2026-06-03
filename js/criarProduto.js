@@ -1,7 +1,10 @@
 const btnTooltipGrupo = document.querySelector('.tooltip-criar-grupo')
 new bootstrap.Tooltip(btnTooltipGrupo)
 
-//menu
+
+// -- menu -- //
+
+//menu ao abrir o modulo
 const btnSalvar = document.querySelector('.btn-salvar')
 btnSalvar.classList.add('disabled')
 
@@ -23,6 +26,7 @@ document.addEventListener('click', event => {
     if(btnMenuData === 'novo') {
         btnSalvar.classList.add('disabled')
         todosOsInputs.forEach(element => element.value = '')
+        unidadeVenda.value = 'un'
         statusAtivo.checked = true
         inputDescricaoProduto.focus()
     
@@ -37,6 +41,7 @@ document.addEventListener('click', event => {
     }
 })
 
+//evento para liberar o botao de salvar
 todosOsInputs.forEach(element => {
     element.addEventListener('keydown', () => {
         btnSalvar.classList.remove('disabled')
@@ -49,7 +54,9 @@ todosOsInputs.forEach(element => {
     })
 })
 
-//menu grupo
+
+
+// -- menu grupo -- //
 function add_disabled(...btns) {
     btns.forEach(btn => {btn.classList.add('disabled')})
 }
@@ -105,11 +112,20 @@ document.addEventListener('click', event => {
         
     //salvar
     } else if(btnMenuGrupoData === 'salvar') {
-        //verificar evento
+        remove_disabled(btnNovoGrupo)
+        grupo.forEach(element => element.classList.remove('disabled'))
+        
+        btnNomeGrupo.value = ''
+        
+        add_disabled(btnSalvarGrupo, btnCancelarGrupo, btnNomeGrupo)
 
     //excluir
     } else if(btnMenuGrupoData === 'excluir') {
-        //verificar evento
+        remove_disabled(btnNovoGrupo)
+
+        grupo.forEach(element => element.checked = '')
+        
+        add_disabled(btnExcluirGrupo, btnCancelarGrupo)
     }
 })
 
@@ -121,22 +137,24 @@ grupo.forEach(event => {
     })
 })
 
+//evento para liberar o botao de salvar
+btnNomeGrupo.addEventListener('keydown', () => {
+    btnSalvarGrupo.classList.remove('disabled')
+})
 
 
 
-
-
-//validação do preço
+// -- validação do preco e margem de lucro -- //
 const custo = document.querySelector('#custo')
 const precoEmValor = document.querySelector('#preco')
-const precoEmPorcen = document.querySelector('#precoPorcento')
+const margem = document.querySelector('#margem')
 
 //data-preco="valor"
-//data-preco = "porcento"
+//data-preco = "margem"
 
 
 
-//validação do campo de grupos 
+// -- validação do value do campo de grupos -- // 
 const inputGrupos = document.querySelector('#grupo')
 const grupoOptions = document.querySelectorAll('#grupos option')
 

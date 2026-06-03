@@ -136,9 +136,9 @@
                         pattern="\d+([.,]\d{1,2})?" 
                         title="Números inteiros ou com no máximo duas casas decimais">
 
-                        <label for="precoPorcento" class="ms-4">Preço em % :</label>
-                        <input type="text" name="precoPorcento" id="precoPorcento" autocomplete="off" 
-                        data-preco = "porcento"
+                        <label for="margem" class="ms-4">Margem em % :</label>
+                        <input type="text" name="margem" id="margem" autocomplete="off" 
+                        data-preco = "margem"
                         maxlength="5" 
                         pattern="\d+([.,]\d{1,2})?" 
                         title="Números inteiros ou com no máximo duas casas decimais">
@@ -302,8 +302,7 @@
 
                             <label for="unidadeVenda" class="ms-4">Unidade Venda:</label>
                             <select name="unidadeVenda" id="unidadeVenda">
-                                <option value="" selected disabled></option>
-                                <option value="un">un</option>
+                                <option value="un" selected>un</option>
                                 <option value="pc">kg</option>
                                 <option value="kg">l</option>
                                 <option value="ml">ml</option>
