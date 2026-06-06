@@ -1,6 +1,7 @@
-# ERP-automacao-comercial
+# Projeto ERP Automacao Comercial
 
-# 🦋 Say System ERP
+# 🦋 Say System 
+🚧 Projeto em desenvolvimento - Versão 1.0
 
 <img width="1918" height="880" alt="image" src="https://github.com/user-attachments/assets/6a173c14-9a92-40d4-9856-6863aa4d6d25" />
 
@@ -11,12 +12,6 @@
 Acesse o projeto online:
 
 https://marcoantonioleal.github.io/ERP-automacao-comercial/views/
-
----
-
-Sistema ERP desktop voltado para pequenos negócios, microempreendedores e profissionais autônomos que necessitam de uma solução simples para gerenciamento de estoque, clientes, fornecedores e vendas.
-
-> 🚧 Projeto em desenvolvimento.
 
 ---
 
@@ -46,17 +41,12 @@ O objetivo do projeto é fornecer uma ferramenta intuitiva, rápida e de fácil 
 - Melhorar o controle de estoque;
 - Acompanhar vendas e movimentações;
 - Oferecer uma interface simples e intuitiva;
-- Possibilitar futuras expansões do sistema.
 
 ---
 
 # 🚧 Status do Projeto
 
 Atualmente o projeto encontra-se em fase de desenvolvimento.
-
-### Módulo em Desenvolvimento
-
-- 📦 Produtos
 
 ### Módulos Planejados
 
@@ -126,65 +116,6 @@ Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu comp
 
 ---
 
-# ✨ Principais Características
-
-- Interface limpa e intuitiva;
-- Aplicação desktop;
-- Banco de dados local;
-- Baixo consumo de recursos;
-- Navegação simplificada;
-- Estrutura modular;
-- Facilidade de manutenção e expansão.
-
----
-
-# 📂 Estrutura Prevista dos Módulos
-
-## Cadastros
-
-### Produtos
-
-Cadastro e gerenciamento de produtos.
-
-Funcionalidades planejadas:
-
-- Cadastro;
-- Alteração;
-- Exclusão;
-- Controle de estoque;
-- Controle de preços;
-- Pesquisa de produtos.
-
-### Clientes
-
-Cadastro de clientes e histórico de relacionamento.
-
-### Fornecedores
-
-Cadastro e gerenciamento de fornecedores.
-
-### Entrada por Nota
-
-Registro de entrada de mercadorias através de notas fiscais.
-
----
-
-## Vendas
-
-### Caixa de Pedidos
-
-Controle e gerenciamento dos pedidos realizados.
-
-### Caixa
-
-Controle financeiro e movimentações do caixa.
-
-### PDV
-
-Tela de vendas rápidas para atendimento direto ao cliente.
-
----
-
 # 🛣️ Roadmap
 
 O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual possuo maior experiência. Após a conclusão das interfaces e fluxos de navegação, serão implementados o back-end utilizando Node.js, Express e arquitetura MVC, seguido da integração com SQLite e posteriormente da adaptação para aplicação desktop através do Electron.
@@ -196,8 +127,6 @@ O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual po
 - [ ] Cadastro de Clientes
 - [ ] Cadastro de Fornecedores
 - [ ] Entrada por Nota
-- [ ] Responsividade
-- [ ] Componentes reutilizáveis
 
 ---
 
@@ -247,27 +176,11 @@ O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual po
 
 ---
 
-# 🎨 Interface
+# 🗄️ Banco de Dados
 
-O sistema está sendo desenvolvido com foco em:
+O modelo entidade-relacionamento do sistema encontra-se na pasta:
 
-- Simplicidade;
-- Rapidez;
-- Organização visual;
-- Facilidade de aprendizado;
-- Produtividade.
-
----
-
-# 📌 Público-Alvo
-
-O Say System foi pensado principalmente para:
-
-- Microempreendedores;
-- Pequenos comerciantes;
-- Prestadores de serviço;
-- Profissionais autônomos;
-- Negócios familiares.
+/docs/mer.drawio
 
 ---
 
