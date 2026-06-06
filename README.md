@@ -116,6 +116,16 @@ Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu comp
 
 ---
 
+# 🗄️ Banco de Dados
+
+Tabelas e modelo entidade-relacionamento encontram-se na pasta:
+
+/docs/tabelas
+<br>
+/docs/mer.drawio
+
+---
+
 ## 🎨 Ícones utilizados
 
 [Font Awesome](https://fontawesome.com/)
@@ -181,16 +191,6 @@ O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual po
 - [ ] Otimizações
 - [ ] Documentação final
 - [ ] Release estável
-
----
-
-# 🗄️ Banco de Dados
-
-Tabelas e modelo entidade-relacionamento encontram-se na pasta:
-
-/docs/tabelas
-<br>
-/docs/mer.drawio
 
 ---
 
