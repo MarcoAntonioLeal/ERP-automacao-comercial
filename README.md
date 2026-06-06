@@ -4,7 +4,15 @@
 
 <img width="1918" height="880" alt="image" src="https://github.com/user-attachments/assets/6a173c14-9a92-40d4-9856-6863aa4d6d25" />
 
+---
+
+## 🔗 Deploy
+
+Acesse o projeto online:
+
 https://marcoantonioleal.github.io/ERP-automacao-comercial/views/
+
+---
 
 Sistema ERP desktop voltado para pequenos negócios, microempreendedores e profissionais autônomos que necessitam de uma solução simples para gerenciamento de estoque, clientes, fornecedores e vendas.
 
