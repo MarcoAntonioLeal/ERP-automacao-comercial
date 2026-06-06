@@ -116,6 +116,14 @@ Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu comp
 
 ---
 
+## 🎨 Ícones utilizados
+
+[Font Awesome](https://fontawesome.com/)
+
+[Flaticon](https://www.flaticon.com/br/)
+
+---
+
 # 🛣️ Roadmap
 
 O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual possuo maior experiência. Após a conclusão das interfaces e fluxos de navegação, serão implementados o back-end utilizando Node.js, Express e arquitetura MVC, seguido da integração com SQLite e posteriormente da adaptação para aplicação desktop através do Electron.
@@ -178,8 +186,10 @@ O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual po
 
 # 🗄️ Banco de Dados
 
-O modelo entidade-relacionamento do sistema encontra-se na pasta:
+Tabelas e modelo entidade-relacionamento encontram-se na pasta:
 
+/docs/tabelas
+<br>
 /docs/mer.drawio
 
 ---
