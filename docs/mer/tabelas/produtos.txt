@@ -1,0 +1,31 @@
+create table produtos {
+	id integer primary key,
+	codigo text unique not null,
+	descricao text not null check(length(descricao) <= 55),
+	cod_barras text unique check(length(cod_barras) between 8 and 14),
+	estoque real not null default 0,
+	custo integer not null default 0,
+	valor_venda integer not null check(valor_venda > 0),
+	ativo integer not null default 1,
+	grupo_id integer,
+	unidade_venda text not null default 'UN' check(unidade_venda in ('UN', 'KG', 'L', 'ML', 'M')),
+	observacao text check(length(observacao) <= 100),
+
+	data_criacao text not null default current_timestamp,
+	criado_por integer not null,
+	data_atualizacao text,
+	atualizado_por integer,
+
+	/*CONSTRAINTS*/
+	foreign key(grupo_id)
+	references grupos(id),
+
+	foreign key(criado_por)
+	references(usuarios(usuario_id),
+	
+	foreign key(atualizado_por)
+	references(usuarios(usuario_id),
+}
+
+O código interno será com prefixo da função do módulo (P0001, P0002, etc...) 
+Campo de custo, margem e preço será transformado de decimal para inteiro e vice e versa 
