@@ -187,26 +187,63 @@ Tela de vendas rápidas para atendimento direto ao cliente.
 
 # 🛣️ Roadmap
 
-## Versão 1.0
+O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual possuo maior experiência. Após a conclusão das interfaces e fluxos de navegação, serão implementados o back-end utilizando Node.js, Express e arquitetura MVC, seguido da integração com SQLite e posteriormente da adaptação para aplicação desktop através do Electron.
 
+## 🚀 Versão 1.0 - Interface e Módulos de Cadastro
+
+- [X] Tela Inicial
 - [ ] Cadastro de Produtos
 - [ ] Cadastro de Clientes
 - [ ] Cadastro de Fornecedores
 - [ ] Entrada por Nota
+- [ ] Responsividade
+- [ ] Componentes reutilizáveis
+
+---
+
+## 🚀 Versão 2.0 - Interface e Módulos de Venda
+
 - [ ] Caixa de Pedidos
 - [ ] Caixa
 - [ ] PDV
+- [ ] Navegação completa entre módulos
 
-## Versões Futuras
+---
 
-- [ ] Relatórios
-- [ ] Dashboard financeiro
-- [ ] Backup automático
-- [ ] Importação de dados
-- [ ] Controle de usuários
-- [ ] Níveis de acesso
-- [ ] Impressão de etiquetas
-- [ ] Integrações externas
+## 🚀 Versão 3.0 - Back-end
+
+- [ ] Configuração Express
+- [ ] Estrutura MVC
+- [ ] Controllers
+- [ ] Models
+- [ ] Rotas
+
+---
+
+## 🚀 Versão 4.0 - Banco de Dados
+
+- [ ] Modelagem SQLite
+- [ ] Tabelas
+- [ ] Relacionamentos
+- [ ] Persistência dos dados
+
+---
+
+## 🚀 Versão 5.0 - Aplicação Desktop
+
+- [ ] Integração Electron
+- [ ] Empacotamento
+- [ ] Instalador
+
+---
+
+## 🚀 Versão 6.0 - Testes e Lançamento
+
+- [ ] Testes gerais
+- [ ] Correção de bugs
+- [ ] Otimizações
+- [ ] Documentação final
+- [ ] Release estável
 
 ---
 
