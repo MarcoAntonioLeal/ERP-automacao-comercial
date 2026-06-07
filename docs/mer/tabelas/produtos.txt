@@ -9,6 +9,7 @@ create table produtos {
 	ativo integer not null default 1,
 	grupo_id integer,
 	unidade_venda text not null default 'UN' check(unidade_venda in ('UN', 'KG', 'L', 'ML', 'M')),
+	fornecedor integer,
 	observacao text check(length(observacao) <= 100),
 
 	data_criacao text not null default current_timestamp,
@@ -19,6 +20,9 @@ create table produtos {
 	/*CONSTRAINTS*/
 	foreign key(grupo_id)
 	references grupos(id),
+
+	foreign key(fornecedor)
+	references(fornecedores(id)),
 
 	foreign key(criado_por)
 	references(usuarios(usuario_id),
