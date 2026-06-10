@@ -1,0 +1,44 @@
+CREATE TABLE clientes (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
+   	nome TEXT NOT NULL CHECK(length(nome) <= 70),
+	tipo_pessoa TEXT NOT NULL CHECK(tipo_pessoa IN ('PF', 'PJ')),
+   	cpf TEXT UNIQUE CHECK(length(cpf) = 11),
+	cnpj TEXT UNIQUE CHECK(length(cnpj) = 14),	
+	cep TEXT CHECK(length(cep) = 8),
+	rua TEXT,
+	bairro TEXT,
+	cidade TEXT,
+	uf TEXT CHECK(length(uf) = 2),
+	telefone_fixo TEXT CHECK(length(telefone_fixo) = 10),
+	celular_01 TEXT CHECK(length(celular_01) = 11),
+	celular_02 TEXT CHECK(length(celular_02) = 11),
+	email_01 TEXT,
+	email_02 TEXT,	
+	observacao text CHECK(length(observacao) <= 200),
+
+
+	/*tabelas abaixo de metadatas*/
+
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(usuario_id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(usuario_id)
+)
+
+Observações para tabela de clientes
+- A colouna codigo de clientes será C0001, com incremento de C0002 e assim por diante
+- Todos os campos precisam do tratamento de trim para espaçamento 
+- Todos os campos precisam de tratamento para uppercase
+- Lembrar de alternar null e valor para CPF e CNPJ pois os dois não podem ser cadastrados ao mesmo tempo (cliente tenha CPF ou CNPJ, mas nunca ambos)
+
+CPF e CNPJ 
+-mascara de cpf e cnpj
+-validador de cpf e cnpj

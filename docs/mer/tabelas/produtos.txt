@@ -1,35 +1,41 @@
-create table produtos {
-	id integer primary key,
-	codigo text unique not null,
-	descricao text not null check(length(descricao) <= 55),
-	cod_barras text unique check(length(cod_barras) between 8 and 14),
-	estoque real not null default 0,
-	custo integer not null default 0,
-	valor_venda integer not null check(valor_venda > 0),
-	ativo integer not null default 1,
-	grupo_id integer,
-	unidade_venda text not null default 'UN' check(unidade_venda in ('UN', 'KG', 'L', 'ML', 'M')),
+CREATE TABLE produtos (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	nome TEXT NOT NULL CHECK(length(nome) <= 55),
+   	cod_barras TEXT UNIQUE CHECK(length(cod_barras) BETWEEN 8 AND 14),
+   	estoque REAL NOT NULL DEFAULT 0,
+   	custo INTEGER NOT NULL DEFAULT 0,
+   	valor_venda INTEGER NOT NULL CHECK(valor_venda > 0),
+   	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
+   	grupo_id integer, 
 	fornecedor integer,
-	observacao text check(length(observacao) <= 100),
+	unidade_venda text not null default 'UN' CHECK(unidade_venda IN ('UN','KG','ML','PC','M')),
+	observacao text CHECK(length(observacao) <= 100),
 
-	data_criacao text not null default current_timestamp,
-	criado_por integer not null,
-	data_atualizacao text,
-	atualizado_por integer,
+	/*tabelas abaixo de metadatas*/
 
-	/*CONSTRAINTS*/
-	foreign key(grupo_id)
-	references grupos(id),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
 
-	foreign key(fornecedor)
-	references(fornecedores(id)),
+	FOREIGN KEY(fornecedor)
+	REFERENCES(fornecedores(id)),
 
-	foreign key(criado_por)
-	references(usuarios(usuario_id),
-	
-	foreign key(atualizado_por)
-	references(usuarios(usuario_id),
-}
+   	FOREIGN KEY(grupo_id)
+   	REFERENCES grupos(id),
 
-O código interno será com prefixo da função do módulo (P0001, P0002, etc...) 
-Campo de custo, margem e preço será transformado de decimal para inteiro e vice e versa 
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(usuario_id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(usuario_id)
+)
+
+Observações para tabela de produtos
+- A colouna codigo de produtos será P0001, com incremento de P0002 e assim por diante
+- Todos os campos precisam do tratamento de trim para espaçamento 
+- Todos os campos precisam de tratamento para uppercase
+- Os campos de check length tem de ser ajustados para o número de caracteres correspondentes aos do campo de input no front
+- Os campos de valor serão inseridos como float e "," no front, no back sendo tratado como inteiro "valor * 100" e para o BD convertido em float novamente porém colocando "." no lugar da ","
+- O campo de unidade de venda, verificar no select do front quais valores temos
