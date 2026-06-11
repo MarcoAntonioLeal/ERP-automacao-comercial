@@ -1,0 +1,23 @@
+CREATE TABLE grupos (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	nome TEXT NOT NULL UNIQUE CHECK(length(nome) <= 18),
+
+	/*tabelas abaixo de metadatas*/
+
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(usuario_id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(usuario_id)
+)
+
+Observações para tabela de grupos
+- A colouna codigo de grupos será G0001, com incremento de G0002 e assim por diante
+- Todos os campos precisam do tratamento de trim para espaçamento 
+- Todos os campos precisam de tratamento para uppercase

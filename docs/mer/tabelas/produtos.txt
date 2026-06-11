@@ -23,7 +23,8 @@ CREATE TABLE produtos (
 	REFERENCES(fornecedores(id)),
 
    	FOREIGN KEY(grupo_id)
-   	REFERENCES grupos(id),
+   	REFERENCES grupos(id)
+	ON DELETE SET NULL,
 
 	FOREIGN KEY(criado_por)
 	REFERENCES usuarios(usuario_id),
