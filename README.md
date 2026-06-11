@@ -1,4 +1,4 @@
-# Projeto ERP Automacao Comercial
+# Projeto de Gestão e Automação Comercial
 
 # 🦋 Say System 
 🚧 Projeto em desenvolvimento - Versão 1.0
@@ -123,6 +123,8 @@ Tabelas e modelo entidade-relacionamento encontram-se na pasta:
 /docs/tabelas
 <br>
 /docs/mer.drawio
+<br>
+/docs/mer.md
 
 ---
 
