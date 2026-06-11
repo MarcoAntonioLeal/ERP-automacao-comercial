@@ -11,7 +11,7 @@
 
 Acesse o projeto online:
 
-https://marcoantonioleal.github.io/ERP-automacao-comercial/views/
+https://marcoantonioleal.github.io/gestao-automacao-comercial/views/  
 
 ---
 
