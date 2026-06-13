@@ -11,10 +11,10 @@ CREATE TABLE grupos (
 	atualizado_por INTEGER,
 
 	FOREIGN KEY(criado_por)
-	REFERENCES usuarios(usuario_id),
+	REFERENCES usuarios(id),
 
 	FOREIGN KEY(atualizado_por)
-	REFERENCES usuarios(usuario_id)
+	REFERENCES usuarios(id)
 )
 
 Observações para tabela de grupos

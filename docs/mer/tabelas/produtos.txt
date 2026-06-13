@@ -8,8 +8,8 @@ CREATE TABLE produtos (
    	valor_venda INTEGER NOT NULL CHECK(valor_venda > 0),
    	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
    	grupo_id integer, 
-	fornecedor integer,
 	unidade_venda text not null default 'UN' CHECK(unidade_venda IN ('UN','KG','ML','PC','M')),
+	fornecedor integer,
 	observacao text CHECK(length(observacao) <= 100),
 
 	/*tabelas abaixo de metadatas*/
@@ -27,10 +27,10 @@ CREATE TABLE produtos (
 	ON DELETE SET NULL,
 
 	FOREIGN KEY(criado_por)
-	REFERENCES usuarios(usuario_id),
+	REFERENCES usuarios(id),
 
 	FOREIGN KEY(atualizado_por)
-	REFERENCES usuarios(usuario_id)
+	REFERENCES usuarios(id)
 )
 
 Observações para tabela de produtos
@@ -38,5 +38,5 @@ Observações para tabela de produtos
 - Todos os campos precisam do tratamento de trim para espaçamento 
 - Todos os campos precisam de tratamento para uppercase
 - Os campos de check length tem de ser ajustados para o número de caracteres correspondentes aos do campo de input no front
-- Os campos de valor serão inseridos como float e "," no front, no back sendo tratado como inteiro "valor * 100" e para o BD convertido em float novamente porém colocando "." no lugar da ","
+- As tabelas de custo e valor_venda de valor serão inseridos como float e "," no front, no back sendo tratado como inteiro "valor * 100" e salvos no bd como inteiros
 - O campo de unidade de venda, verificar no select do front quais valores temos
