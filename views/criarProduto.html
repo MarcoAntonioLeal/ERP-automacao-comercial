@@ -38,9 +38,7 @@
             <hr class="linha-vertical">
 
             <!--botão modal p/ confimar a exclusão-->
-            <button type="button" class="borda btn-menu btn-excluir" data-btn-menu="excluir"
-            data-bs-toggle="modal"
-            data-bs-target="#staticExcluir">
+            <button type="button" class="borda btn-menu btn-excluir" data-btn-menu="excluir" data-bs-toggle="modal" data-bs-target="#staticExcluir">
                 <img src="../img/excluir.svg" alt="" class="icon-l">
 
                 <div>
@@ -118,37 +116,23 @@
                         <input type="text" name="descricao" id="descricao" autocomplete="off" maxlength="55" required>
                             
                         <label for="cod-barras" class="ms-4">Código de Barras:</label>
-                        <input type="text" name="cod-barras" id="cod-barras" autocomplete="off" maxlength="13" pattern="\d+" title="Digite apenas números">
+                        <input type="text" name="cod-barras" id="cod-barras" autocomplete="off" maxlength="14" minlength="8" pattern="/^\d{8,14}$/" title="Digite apenas números">
                     </div>
 
                     <hr>
 
                     <div class="preco-e-custo py-3">
                         <label for="estoque">Estoque:</label>
-                        <input type="text" name="estoque" id="estoque" autocomplete="off" 
-                        maxlength="6" 
-                        required pattern="\d+([.,]\d{1,2})?" 
-                        title="Números inteiros ou com no máximo duas casas decimais">
+                        <input type="text" name="estoque" id="estoque" autocomplete="off" maxlength="7" required pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
 
                         <label for="custo" class="ms-4">Custo:</label>
-                        <input type="text" name="custo" id="custo" autocomplete="off" 
-                        maxlength="5" 
-                        pattern="\d+([.,]\d{1,2})?" 
-                        title="Números inteiros ou com no máximo duas casas decimais">
+                        <input type="text" name="custo" id="custo" autocomplete="off" data-preco = "custo" maxlength="6" class="calcValorProduto" pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
 
                         <label for="margem" class="ms-4">Margem em % :</label>
-                        <input type="text" name="margem" id="margem" autocomplete="off" 
-                        data-preco = "margem"
-                        maxlength="5" 
-                        pattern="\d+([.,]\d{1,2})?" 
-                        title="Números inteiros ou com no máximo duas casas decimais">
+                        <input type="text" name="margem" id="margem" autocomplete="off" data-preco = "margem" maxlength="6" class="calcValorProduto" pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
 
                         <label for="preco" class="ms-4">Preço:</label>
-                        <input type="text" name="preco" id="preco" autocomplete="off" 
-                        data-preco="valor"
-                        maxlength="5" 
-                        required pattern="\d+([.,]\d{1,2})?" 
-                        title="Números inteiros ou com no máximo duas casas decimais">
+                        <input type="text" name="preco" id="preco" autocomplete="off" data-preco="preco" maxlength="7" class="calcValorProduto" required pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
                     </div>
                 
                     <hr>
@@ -160,30 +144,21 @@
                             <label for="grupo">Grupos:</label>
                             <input list="grupos" name="grupo" id="grupo" autocomplete="off">
                             <datalist id="grupos">
+                            <!--linha de molde-->
                                 <option value="blusas"></option>
                                 <option value="bolsas"></option>
+                            <!--linha de molde-->
                             </datalist>
 
                             <!--botão modal para criacao de grupo-->
-                            <button type="button" 
-                            class="btn btns-criar-apagar btn-criar tooltip-criar-grupo"
-                            data-bs-toggle="modal"
-                             
-                            data-bs-target="#staticGrupo"
-                            data-bs-placement="top" 
-                            data-bs-title="criar novo grupo">
+                            <button type="button" class="btn btns-criar-apagar btn-criar tooltip-criar-grupo" data-bs-toggle="modal" data-bs-target="#staticGrupo" data-bs-placement="top" data-bs-title="criar novo grupo">
 
                                 <img src="../img/+.svg" alt="" class="icon-xs">
 
                             </button> 
 
                             <!-- Modal para criar novo grupo--> 
-                            <div class="modal fade" id="staticGrupo" 
-                            data-bs-backdrop="static" 
-                            data-bs-keyboard="false" 
-                            tabindex="-1" 
-                            aria-labelledby="grupoLabel" 
-                            aria-hidden="true">
+                            <div class="modal fade" id="staticGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="grupoLabel" aria-hidden="true">
                                 
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -246,7 +221,7 @@
 
                                         <div class="modal-footer footer-modal-grupo">
                                             <section>
-                                                <input type="text" name="nomeGrupo" id="nomeGrupo" autocomplete="off" maxlength="18">
+                                                <input type="text" name="nomeGrupo" id="nomeGrupo" autocomplete="off" maxlength="18" placeholder="grupo...">
                                             </section>
 
                                             <section class="sec-modal-table">
@@ -260,36 +235,6 @@
                                                         <td class="nome-td">grupo 1</td>
                                                     </tr>
                                                     <!--linha de molde-->
-
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" name="grupo-value" class="grupo">
-                                                        </td>
-                                                        <td class="id-td">02</td>
-                                                        <td class="nome-td">grupo 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" name="grupo-value" class="grupo">
-                                                        </td>
-                                                        <td class="id-td">03</td>
-                                                        <td class="nome-td">grupo 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" name="grupo-value" class="grupo">
-                                                        </td>
-                                                        <td class="id-td">04</td>
-                                                        <td class="nome-td">grupo 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" name="grupo-value" class="grupo">
-                                                        </td>
-                                                        <td class="id-td">05</td>
-                                                        <td class="nome-td">grupo 5</td>
-                                                    </tr>
-                                                    
                                                 </table>
                                             </section>
                                         </div>
@@ -316,9 +261,107 @@
                             </button>
                         </div>
                         
-                        <label for="fornecedor" class="ms-4">Fornecedor:</label>
-                        <input type="text" name="fornecedor" id="fornecedor" autocomplete="off">
-                        
+                        <div class="fornecedores">
+                            <label for="fornecedor" class="ms-4">Fornecedores:</label>
+                            <select name="fornecedor" id="fornecedor">
+                            <!--linha de molde-->
+                                <option value="NULL"></option>
+                                <option value="fornecedor 01">fornecedor 01</option>
+                                <option value="fornecedor 02">fornecedor 02</option>
+                            <!--linha de molde-->
+                            </select>
+
+
+                            <!--botão modal para verificar fornecedores desse produto-->
+                            <button type="button" class="btn-fornecedor tooltip-fornecedores" data-bs-toggle="modal" data-bs-target="#modalFornecedores" data-bs-placement="top" data-bs-title="fornecedores desse produto">
+
+                                <img src="../img/modulo-fornecedor.svg" alt="" class="icon-xs">
+
+                            </button>
+
+
+                            <!-- Modal fornecedores desse produto -->
+                            <div class="modal fade" id="modalFornecedores" tabindex="-1" aria-labelledby="fornecedores-produto" aria-hidden="true" data-bs-backdrop="static">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <h1 class="modal-title fs-5" id="fornecedores-produto">
+                                                Fornecedores desse Produto
+                                            </h1>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                        
+                                            <!-- acordeão para forcecedores desse produto -->
+
+                                            <div class="accordion" id="accordionFornecedores">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header"><!-- Em data-bs-target="primeiro" será dinâmico o valor dele será o nome o primeiro nome do fornecedor sem espaços -->
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#primeiro" aria-expanded="false" aria-controls="collapseOne">
+                                                        Fornecedor 01
+                                                        </button>
+                                                    </h2>
+                                                        <!-- Em id="primeiro" será dinâmico o valor dele será o nome o primeiro nome do fornecedor sem espaços -->
+                                                    <div id="primeiro" class="accordion-collapse collapse" data-bs-parent="#accordionFornecedores">
+                                                        <div class="accordion-body">
+
+                                                        
+                                                            <table class="table table-bordered border-secondary">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Dia de Entrada</th>
+                                                                        <th>Quantidade</th>
+                                                                        <th>Custo</th>
+                                                                        <th>Nº da Nota</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <!--linha de molde -->
+                                                                    <tr>
+                                                                        <td>09/06/2026</td>
+                                                                        <td>100</td>
+                                                                        <td>6,35</td>
+                                                                        <td>18613</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>09/06/2026</td>
+                                                                        <td>100</td>
+                                                                        <td>6,35</td>
+                                                                        <td>18613</td>
+                                                                    </tr>
+                                                                    <!--linha de molde -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Fornecedor 02
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFornecedores">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <!-- acordeão para forcecedores desse produto -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> 
                     </div>
 
                     <br>

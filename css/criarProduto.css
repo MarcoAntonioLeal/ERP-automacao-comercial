@@ -230,3 +230,40 @@ td {
     &.id-td{width: 15%;}
     &.nome-td{width: 85%;}
 }
+
+/*====Fornecefores====*/
+.fornecedores {
+    display: flex; 
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    & select {
+        width: 15rem;
+        max-height: 4rem;
+        overflow-y: scroll;
+    }
+}
+    
+.btn-fornecedor {
+    display: inherit;
+    justify-content: center;
+    align-items: inherit;
+    width: 3rem;
+    height: 2.1rem;
+
+    border-radius: 5px;
+    border: 1px solid var(--cor-09);
+    background-color: var(--cor-04);
+    transition-duration: .5s;
+
+    &:hover {
+        background-color: var(--cor-09);
+        border: 1px solid var(--cor-04);
+        transition-duration: .5s;
+    }
+}
+
+.accordion-body {
+    background-color: var(--cor-04);
+}

@@ -1,17 +1,26 @@
+// -- tooltip -- //
 const btnTooltipGrupo = document.querySelector('.tooltip-criar-grupo')
+const btnTooltipFornecedores = document.querySelector('.tooltip-fornecedores')
 new bootstrap.Tooltip(btnTooltipGrupo)
+new bootstrap.Tooltip(btnTooltipFornecedores)
+
+const modalGrupo = document.getElementById('staticGrupo')
+
+modalGrupo.addEventListener('hide.bs.modal', () => {
+    const tooltipGrupo = bootstrap.Tooltip.getInstance(btnTooltipGrupo)
+    tooltipGrupo.hide()
+
+    /*Ainda com problema */
+})
 
 
 // -- menu -- //
 
 //menu ao abrir o modulo
-const btnSalvar = document.querySelector('.btn-salvar')
-btnSalvar.classList.add('disabled')
-
 const btnExcluir = document.querySelector('.btn-excluir')
 btnExcluir.classList.add('disabled')
 
-const todosOsInputs = document.querySelectorAll('input:not(#codigo, #nomeGrupo, .grupo), textarea, select')
+const todosOsInputs = document.querySelectorAll('input, textarea, select')
 const inputDescricaoProduto = document.querySelector('#descricao')
 const statusAtivo = document.querySelector('#ativo-inativo')
 
@@ -24,7 +33,7 @@ document.addEventListener('click', event => {
     
     //novo
     if(btnMenuData === 'novo') {
-        btnSalvar.classList.add('disabled')
+        btnExcluir.classList.add('disabled')
         todosOsInputs.forEach(element => element.value = '')
         unidadeVenda.value = 'un'
         statusAtivo.checked = true
@@ -40,118 +49,6 @@ document.addEventListener('click', event => {
         //verificar se terá algum evento
     }
 })
-
-//evento para liberar o botao de salvar
-todosOsInputs.forEach(element => {
-    element.addEventListener('keydown', () => {
-        btnSalvar.classList.remove('disabled')
-    })
-})
-
-todosOsInputs.forEach(element => {
-    element.addEventListener('change', () => {
-        btnSalvar.classList.remove('disabled')
-    })
-})
-
-
-
-// -- menu grupo -- //
-function add_disabled(...btns) {
-    btns.forEach(btn => {btn.classList.add('disabled')})
-}
-
-function remove_disabled(...btns) {
-    btns.forEach(btn => {btn.classList.remove('disabled')})
-}
-
-const btnNovoGrupo = document.querySelector('.btn-novo-grupo')
-const btnCancelarGrupo = document.querySelector('.btn-cancelar-grupo')
-const btnSalvarGrupo = document.querySelector('.btn-salvar-grupo')
-const btnExcluirGrupo = document.querySelector('.btn-excluir-grupo')
-const btnNomeGrupo = document.querySelector('#nomeGrupo')
-const grupo = document.querySelectorAll('.grupo')
-
-//ao entrar no modulo
-const btnAbrirModalGrupo = document.querySelector('.btn-criar')
-btnAbrirModalGrupo.addEventListener('click', () => {
-
-    add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, btnNomeGrupo)
-
-    btnNomeGrupo.value = ''
-
-    remove_disabled(btnNovoGrupo)
-    grupo.forEach(element => element.checked = '')
-    grupo.forEach(element => element.classList.remove('disabled'))
-})
-
-document.addEventListener('click', event => {
-    const btnMenuGrupo = event.target.closest('.btn-menu-grupo')
-    if(!btnMenuGrupo) return
-
-    const btnMenuGrupoData = btnMenuGrupo.dataset.btnMenuGrupo
-
-    //novo
-    if(btnMenuGrupoData === 'novo') {
-        remove_disabled(btnCancelarGrupo, btnNomeGrupo)
-        add_disabled(btnNovoGrupo, btnExcluirGrupo)
-        grupo.forEach(element => element.checked = '')
-        grupo.forEach(element => element.classList.add('disabled'))
-        btnNomeGrupo.focus()
-        
-    //cancelar
-    } else if(btnMenuGrupoData === 'cancelar') {
-
-        add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, btnNomeGrupo)
-
-        btnNomeGrupo.value = ''
-
-        remove_disabled(btnNovoGrupo)
-        grupo.forEach(element => element.checked = '')
-        grupo.forEach(element => element.classList.remove('disabled'))
-        
-    //salvar
-    } else if(btnMenuGrupoData === 'salvar') {
-        remove_disabled(btnNovoGrupo)
-        grupo.forEach(element => element.classList.remove('disabled'))
-        
-        btnNomeGrupo.value = ''
-        
-        add_disabled(btnSalvarGrupo, btnCancelarGrupo, btnNomeGrupo)
-
-    //excluir
-    } else if(btnMenuGrupoData === 'excluir') {
-        remove_disabled(btnNovoGrupo)
-
-        grupo.forEach(element => element.checked = '')
-        
-        add_disabled(btnExcluirGrupo, btnCancelarGrupo)
-    }
-})
-
-//input grupo
-grupo.forEach(event => {
-    event.addEventListener('change', () => {
-        remove_disabled(btnExcluirGrupo, btnCancelarGrupo)
-        add_disabled(btnNovoGrupo)
-    })
-})
-
-//evento para liberar o botao de salvar
-btnNomeGrupo.addEventListener('keydown', () => {
-    btnSalvarGrupo.classList.remove('disabled')
-})
-
-
-
-// -- validação do preco e margem de lucro -- //
-const custo = document.querySelector('#custo')
-const precoEmValor = document.querySelector('#preco')
-const margem = document.querySelector('#margem')
-
-//data-preco="valor"
-//data-preco = "margem"
-
 
 
 // -- validação do value do campo de grupos -- // 
@@ -172,3 +69,130 @@ const unidadeVenda = document.querySelector('select')
 btnApagarUnVenda.addEventListener('click', () => {
     unidadeVenda.value = ''
 })
+
+
+// -- menu grupo -- //
+function add_disabled(...btns) {
+    btns.forEach(btn => {btn.classList.add('disabled')})
+}
+
+function remove_disabled(...btns) {
+    btns.forEach(btn => {btn.classList.remove('disabled')})
+}
+
+const btnNovoGrupo = document.querySelector('.btn-novo-grupo')
+const btnCancelarGrupo = document.querySelector('.btn-cancelar-grupo')
+const btnSalvarGrupo = document.querySelector('.btn-salvar-grupo')
+const btnExcluirGrupo = document.querySelector('.btn-excluir-grupo')
+const nomeGrupo = document.querySelector('#nomeGrupo')
+const grupo = document.querySelectorAll('.grupo')
+
+//ao entrar no modulo
+const btnAbrirModalGrupo = document.querySelector('.btn-criar')
+btnAbrirModalGrupo.addEventListener('click', () => {
+
+    add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, nomeGrupo)
+
+    nomeGrupo.value = ''
+
+    remove_disabled(btnNovoGrupo)
+    grupo.forEach(element => element.checked = '')
+    grupo.forEach(element => element.classList.remove('disabled'))
+})
+
+document.addEventListener('click', event => {
+    const btnMenuGrupo = event.target.closest('.btn-menu-grupo')
+    if(!btnMenuGrupo) return
+
+    const btnMenuGrupoData = btnMenuGrupo.dataset.btnMenuGrupo
+
+    //novo
+    if(btnMenuGrupoData === 'novo') {
+        remove_disabled(btnCancelarGrupo, nomeGrupo)
+        add_disabled(btnNovoGrupo, btnExcluirGrupo)
+        grupo.forEach(element => element.checked = '')
+        grupo.forEach(element => element.classList.add('disabled'))
+        nomeGrupo.focus()
+        
+    //cancelar
+    } else if(btnMenuGrupoData === 'cancelar') {
+
+        add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, nomeGrupo)
+
+        nomeGrupo.value = ''
+
+        remove_disabled(btnNovoGrupo)
+        grupo.forEach(element => element.checked = '')
+        grupo.forEach(element => element.classList.remove('disabled'))
+        
+    //salvar
+    } else if(btnMenuGrupoData === 'salvar') {
+        remove_disabled(btnNovoGrupo)
+        grupo.forEach(element => element.classList.remove('disabled'))
+        
+        nomeGrupo.value = ''
+        
+        add_disabled(btnSalvarGrupo, btnCancelarGrupo, nomeGrupo)
+
+    //excluir
+    } else if(btnMenuGrupoData === 'excluir') {
+        remove_disabled(btnNovoGrupo)
+
+        grupo.forEach(element => element.checked = '')
+        
+        add_disabled(btnExcluirGrupo, btnCancelarGrupo)
+    }
+})
+
+//input grupo
+grupo.forEach(event => {
+    event.addEventListener('change', () => {
+        remove_disabled(btnExcluirGrupo, btnCancelarGrupo)
+        add_disabled(btnNovoGrupo)
+    })
+})
+
+//evento para liberar o botao de salvar
+nomeGrupo.addEventListener('input', () => {
+    if(nomeGrupo.value.trim() === '') {
+        add_disabled(btnSalvarGrupo)
+    } else {
+        remove_disabled(btnSalvarGrupo)
+    }
+})
+
+
+// -- validação do preco e margem de lucro -- //
+const custo = document.querySelector('#custo')
+const preco = document.querySelector('#preco')
+const margem = document.querySelector('#margem')
+
+/*function custoMargemPreco(custo = 0, preco = 0, margem = 0) {
+    const custoProduto = Math.round((preco * 100) / margem).toFixed(2)
+    const precoProduto = Math.round((custo * margem) / 100).toFixed(2)
+    const margemProduto = Math.round( ((preco * 100) / custo) - 100 ).toFixed(2)
+
+    return {custoProduto, precoProduto, margemProduto}
+}*/
+
+/*
+document.addEventListener('change', event => {
+    const valorProduto = event.target.closest('.calcValorProduto')
+
+    if(!valorProduto) return
+
+    const calcValorProduto = valorProduto.dataset.preco
+
+    if(calcValorProduto === 'custo') {
+        margem.value = Math.round( ((preco.value || 0 * 100) / custo.value || 0) - 100 ).toFixed(2)
+        preco.value = Math.round((custo.value || 0 * margem.value || 0) / 100).toFixed(2)
+
+    } else if(calcValorProduto === 'margem') {
+        custo.value = Math.round((preco.value || 0 * 100) / margem.value || 0).toFixed(2)
+        preco.value = Math.round((custo.value || 0 * margem.value || 0) / 100).toFixed(2)
+
+    } else if(calcValorProduto === 'preco') {
+        custo.value = Math.round((preco.value || 0 * 100) / margem.value || 0).toFixed(2)
+        margem.value = Math.round( ((preco.value || 0 * 100) / custo.value || 0) - 100 ).toFixed(2)
+    }
+})*/
