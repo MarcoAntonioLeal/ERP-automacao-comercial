@@ -1,25 +1,21 @@
+# Modelo Entidade Relacionamento (MER)
+
 ```mermaid
 erDiagram
 
-    USUARIOS ||--o{ PRODUTOS : cria
-    USUARIOS ||--o{ CLIENTES : cria
-    USUARIOS ||--o{ GRUPOS : cria
+    USUARIOS ||--o{ CLIENTES : gerencia
+    USUARIOS ||--o{ FORNECEDORES : gerencia
+    USUARIOS ||--o{ GRUPOS : gerencia
+    USUARIOS ||--o{ PRODUTOS : gerencia
 
-    GRUPOS ||--o{ PRODUTOS : possui
+    GRUPOS ||--o{ PRODUTOS : classifica
 
     FORNECEDORES ||--o{ PRODUTOS : fornece
 
-    PRODUTOS {
+    USUARIOS {
         INTEGER id PK
         TEXT codigo
         TEXT nome
-        TEXT cod_barras
-        REAL estoque
-        INTEGER custo
-        INTEGER valor_venda
-        INTEGER ativo
-        INTEGER grupo_id FK
-        INTEGER fornecedor FK
     }
 
     CLIENTES {
@@ -27,8 +23,13 @@ erDiagram
         TEXT codigo
         TEXT nome
         TEXT tipo_pessoa
-        TEXT cpf
-        TEXT cnpj
+    }
+
+    FORNECEDORES {
+        INTEGER id PK
+        TEXT codigo
+        TEXT nome
+        TEXT tipo_pessoa
     }
 
     GRUPOS {
@@ -37,15 +38,30 @@ erDiagram
         TEXT nome
     }
 
-    FORNECEDORES {
+    PRODUTOS {
         INTEGER id PK
         TEXT codigo
         TEXT nome
+        REAL estoque
+        INTEGER valor_venda
+        INTEGER grupo_id FK
+        INTEGER fornecedor FK
     }
+```
 
-    USUARIOS {
-        INTEGER usuario_id PK
-        TEXT codigo
-        TEXT nome
-    }
+## Legenda
+
+- PK = Chave Primária
+- FK = Chave Estrangeira
+
+## Observações
+
+Todas as tabelas possuem os campos:
+
+- criado_por
+- atualizado_por
+- data_criacao
+- data_atualizacao
+
+que referenciam a tabela `USUARIOS`.
 ```
