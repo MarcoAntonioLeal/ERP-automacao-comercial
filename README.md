@@ -120,11 +120,7 @@ Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu comp
 
 Tabelas e modelo entidade-relacionamento encontram-se na pasta:
 
-/docs/tabelas
-<br>
-/docs/mer.drawio
-<br>
-/docs/mer.md
+/docs/mer
 
 ---
 
