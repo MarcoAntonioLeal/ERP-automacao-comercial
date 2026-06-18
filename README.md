@@ -116,11 +116,15 @@ Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu comp
 
 ---
 
-# 🗄️ Banco de Dados
+# 🗄️ Banco de Dados e Documentação Técnica
 
 Tabelas e modelo entidade-relacionamento encontram-se na pasta:
 
 /docs/mer
+
+Documentação Técnica encontram-se na pasta:
+
+/docs/regras-negocio
 
 ---
 
