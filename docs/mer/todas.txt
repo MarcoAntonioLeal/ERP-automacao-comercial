@@ -1,0 +1,170 @@
+CREATE TABLE clientes (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
+   	nome TEXT NOT NULL CHECK(length(nome) <= 70),
+	tipo_pessoa TEXT NOT NULL CHECK(tipo_pessoa IN ('PF', 'PJ')),
+   	cpf TEXT UNIQUE CHECK(length(cpf) = 11),
+	cnpj TEXT UNIQUE CHECK(length(cnpj) = 14),	
+	cep TEXT CHECK(length(cep) = 8),
+	rua TEXT,
+	bairro TEXT,
+	cidade TEXT,
+	uf TEXT CHECK(length(uf) = 2),
+	telefone_fixo TEXT CHECK(length(telefone_fixo) = 10),
+	celular_01 TEXT CHECK(length(celular_01) = 11),
+	celular_02 TEXT CHECK(length(celular_02) = 11),
+	email_01 TEXT,
+	email_02 TEXT,	
+	observacao text CHECK(length(observacao) <= 200),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id)
+),
+
+CREATE TABLE fornecedores (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	ativo INTEGER NOT NULL DEFAULT 1 CHECK(ativo IN (0, 1)),
+   	nome TEXT NOT NULL CHECK(length(nome) <= 70),
+	tipo_pessoa TEXT NOT NULL CHECK(tipo_pessoa IN ('PF', 'PJ')),
+   	cpf TEXT UNIQUE CHECK(length(cpf) = 11),
+	cnpj TEXT UNIQUE CHECK(length(cnpj) = 14),
+	representante TEXT CHECK(length(representante) <= 30),	
+	cep TEXT CHECK(length(cep) = 8),
+	rua TEXT,
+	bairro TEXT,
+	cidade TEXT,
+	uf TEXT CHECK(length(uf) = 2),
+	telefone_fixo TEXT CHECK(length(telefone_fixo) = 10),
+	celular_01 TEXT CHECK(length(celular_01) = 11),
+	celular_02 TEXT CHECK(length(celular_02) = 11),
+	email_01 TEXT,
+	email_02 TEXT,	
+	observacao TEXT CHECK(length(observacao) <= 200),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id)
+),
+
+CREATE TABLE grupos (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	nome TEXT NOT NULL UNIQUE CHECK(length(nome) <= 18),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id)
+),
+
+CREATE TABLE pedidos (
+	id INTEGER PRIMARY KEY,
+	cliente_id INTEGER,
+	tipo_venda TEXT NOT NULL CHECK(tipo_venda IN ('ORCAMENTO', 'VENDA')),  	
+	num_pedido INTEGER NOT NULL UNIQUE,
+	valor_bruto INTEGER NOT NULL DEFAULT 0 CHECK(valor_bruto >= 0),
+	valor_desconto INTEGER NOT NULL DEFAULT 0 CHECK(valor_desconto >= 0),
+	valor_liquido INTEGER NOT NULL DEFAULT 0 CHECK(valor_liquido >= 0),
+	forma_recebimento TEXT NOT NULL CHECK(forma_recebimento IN ('DINHEIRO', 'PIX', 'CARTAO_DEBITO', 'CARTAO_CREDITO', 'MULTIPLAS_FORMAS')),
+	venda_cancelada TEXT NOT NULL DEFAULT 'N' CHECK(venda_cancelada IN ('S', 'N')),
+	data_venda TEXT,
+	turno_caixa_id INTEGER NOT NULL,
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(cliente_id)
+	REFERENCES clientes(id),
+
+	FOREIGN KEY(turno_caixa_id)
+   	REFERENCES caixas(id) 	
+),
+
+CREATE TABLE produtos (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	nome TEXT NOT NULL CHECK(length(nome) <= 55),
+   	cod_barras TEXT UNIQUE CHECK(length(cod_barras) BETWEEN 8 AND 14),
+   	estoque REAL NOT NULL DEFAULT 0,
+   	custo INTEGER NOT NULL DEFAULT 0 CHECK(custo >= 0),
+   	valor_venda INTEGER NOT NULL CHECK(valor_venda > 0),
+   	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
+   	grupo_id integer,
+	unidade_venda text not null default 'UN' CHECK(unidade_venda IN ('UN','KG','ML','PC','M')),
+	fornecedor_id integer, 
+	observacao text CHECK(length(observacao) <= 100),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+   	FOREIGN KEY(grupo_id)
+   	REFERENCES grupos(id)
+	ON DELETE SET NULL,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(fornecedor_id)
+	REFERENCES fornecedores(id)
+),
+
+CREATE TABLE usuarios (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+   	ativo INTEGER NOT NULL DEFAULT 1 CHECK(ativo IN (0, 1)),
+   	nome TEXT NOT NULL CHECK(length(nome) <= 15),
+	senha TEXT NOT NULL UNIQUE CHECK(length(senha) = 4),	
+
+	/*permissoes de acesso aos modulos*/
+
+	mod_usuarios INTEGER DEFAULT 0 CHECK(mod_usuarios IN (0, 1)), 
+	mod_caixa_pedidos INTEGER DEFAULT 0 CHECK(mod_caixa_pedidos IN (0, 1)), 
+	mod_caixa INTEGER DEFAULT 0 CHECK(mod_caixa IN (0, 1)), 
+	mod_pdv INTEGER DEFAULT 0 CHECK(mod_pdv IN (0, 1)), 
+	mod_produtos INTEGER DEFAULT 0 CHECK(mod_produtos IN (0, 1)), 
+	mod_clientes INTEGER DEFAULT 0 CHECK(mod_clientes IN (0, 1)), 
+	mod_fornecedores INTEGER DEFAULT 0 CHECK(mod_fornecedores IN (0, 1)), 
+	mod_entrada_nota INTEGER DEFAULT 0 CHECK(mod_entrada_nota IN (0, 1)), 
+
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id)
+)

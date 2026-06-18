@@ -18,9 +18,6 @@ CREATE TABLE fornecedores (
 	email_01 TEXT,
 	email_02 TEXT,	
 	observacao TEXT CHECK(length(observacao) <= 200),
-
-	/*tabelas abaixo de metadatas*/
-
 	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	criado_por INTEGER NOT NULL,
 	data_atualizacao TEXT, 
@@ -32,8 +29,3 @@ CREATE TABLE fornecedores (
 	FOREIGN KEY(atualizado_por)
 	REFERENCES usuarios(id)
 )
-
-Observações para tabela de fornecedores
-- A colouna codigo de fornecedores será F0001, com incremento de F0002 e assim por diante
-- Todos os campos precisam do tratamento de trim para espaçamento 
-- Todos os campos precisam de tratamento para uppercase
