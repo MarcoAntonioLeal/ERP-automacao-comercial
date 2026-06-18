@@ -7,10 +7,15 @@ erDiagram
     USUARIOS ||--o{ FORNECEDORES : gerencia
     USUARIOS ||--o{ GRUPOS : gerencia
     USUARIOS ||--o{ PRODUTOS : gerencia
+    USUARIOS ||--o{ PEDIDOS : gerencia
 
     GRUPOS ||--o{ PRODUTOS : classifica
 
     FORNECEDORES ||--o{ PRODUTOS : fornece
+
+    CLIENTES ||--o{ PEDIDOS : realiza
+
+    CAIXAS ||--o{ PEDIDOS : registra
 
     USUARIOS {
         INTEGER id PK
@@ -45,23 +50,24 @@ erDiagram
         REAL estoque
         INTEGER valor_venda
         INTEGER grupo_id FK
-        INTEGER fornecedor FK
+        INTEGER fornecedor_id FK
+    }
+
+    PEDIDOS {
+        INTEGER id PK
+        INTEGER num_pedido
+        INTEGER cliente_id FK
+        INTEGER turno_caixa_id FK
+        TEXT tipo_venda
+        INTEGER valor_liquido
+    }
+
+    CAIXAS {
+        INTEGER id PK
     }
 ```
 
 ## Legenda
 
-- PK = Chave Primária
-- FK = Chave Estrangeira
-
-## Observações
-
-Todas as tabelas possuem os campos:
-
-- criado_por
-- atualizado_por
-- data_criacao
-- data_atualizacao
-
-que referenciam a tabela `USUARIOS`.
-```
+* PK = Chave Primária
+* FK = Chave Estrangeira
