@@ -171,9 +171,9 @@ O projeto está sendo desenvolvido inicialmente pelo front-end, área na qual po
 
 ## 🚀 Versão 4.0 - Banco de Dados
 
-- [ ] Modelagem SQLite
-- [ ] Tabelas
-- [ ] Relacionamentos
+- [x] Modelagem SQLite
+- [x] Tabelas
+- [x] Relacionamentos
 - [ ] Persistência dos dados
 
 ---
