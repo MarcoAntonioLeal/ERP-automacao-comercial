@@ -1,0 +1,25 @@
+CREATE TABLE movimentacoes_caixas (
+    	id INTEGER PRIMARY KEY,
+	codigo TEXT UNIQUE NOT NULL,
+	data_movimentacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	usuario_movimentacao_id INTEGER NOT NULL,
+	pedido_id INTEGER,
+	num_pedido INTEGER,
+	tipo_operacao TEXT NOT NULL CHECK(tipo_operacao IN ('VENDA', 'ORCAMENTO', 'SUPRIMENTO', 'SANGRIA')),
+	valor INTEGER NOT NULL CHECK(valor >= 0),
+	turno_caixa_id INTEGER NOT NULL,
+	cliente_id INTEGER,
+	nome_cliente TEXT
+
+	FOREIGN KEY(usuario_movimentacao_id)
+    	REFERENCES usuarios(id),
+	
+    	FOREIGN KEY(cliente_id)
+    	REFERENCES clientes(id),
+
+	FOREIGN KEY(pedido_id)
+	REFERENCES pedidos(id),
+
+	FOREIGN KEY(turno_caixa_id)
+    	REFERENCES caixas(id)
+)

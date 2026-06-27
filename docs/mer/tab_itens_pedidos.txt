@@ -1,0 +1,45 @@
+CREATE TABLE itens_pedidos (
+	id INTEGER PRIMARY KEY,
+	codigo TEXT UNIQUE NOT NULL,
+	pedido_id INTEGER NOT NULL,
+	num_pedido INTEGER NOT NULL,
+	produto_id INTEGER NOT NULL,
+	produto_nome TEXT NOT NULL,
+	grupo_id INTEGER,
+	grupo_nome TEXT,
+	fornecedor_id INTEGER,
+	fornecedor_nome TEXT,
+	valor_unitario INTEGER NOT NULL CHECK(valor_unitario > 0),
+	quant_vendida REAL NOT NULL CHECK(quant_vendida > 0),
+	valor_total INTEGER NOT NULL CHECK(valor_total > 0),
+	cliente_id INTEGER,
+	cliente_nome TEXT,
+	item_cancelado TEXT NOT NULL DEFAULT 'N' CHECK(item_cancelado IN ('S', 'N')), 
+	unidade_venda text not null CHECK(unidade_venda IN ('UN','KG','ML','PC','M')),	
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id), 
+
+	FOREIGN KEY(produto_id) 
+	REFERENCES produtos(id),
+
+	FOREIGN KEY(grupo_id)
+	REFERENCES grupos(id),
+
+	FOREIGN KEY(fornecedor_id)
+	REFERENCES fornecedores(id),
+
+	FOREIGN KEY(cliente_id)
+	REFERENCES clientes(id),
+
+	FOREIGN KEY(pedido_id)
+	REFERENCES pedidos(id)
+)
+

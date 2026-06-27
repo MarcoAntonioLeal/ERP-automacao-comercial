@@ -1,0 +1,15 @@
+CREATE TABLE caixas (
+    	id INTEGER PRIMARY KEY,
+	codigo TEXT UNIQUE NOT NULL,
+	data_abertura TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	usuario_abertura_id INTEGER NOT NULL,
+	data_fechamento TEXT,
+	usuario_fechamento_id INTEGER,
+	caixa_fechado TEXT NOT NULL DEFAULT 'N' CHECK(caixa_fechado IN ('S', 'N')),
+
+	FOREIGN KEY(usuario_abertura_id)
+    	REFERENCES usuarios(id),
+
+	FOREIGN KEY(usuario_fechamento_id)
+    	REFERENCES usuarios(id)
+)

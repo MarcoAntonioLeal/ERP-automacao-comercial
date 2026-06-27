@@ -10,6 +10,7 @@ Cadastro e gerenciamento dos clientes do sistema.
 * O CPF deve possuir 11 caracteres.
 * O CNPJ deve possuir 14 caracteres.
 * O CEP deve possuir 8 caracteres.
+* A UF deve possuir 2 caracteres.
 * O telefone fixo deve possuir 10 caracteres.
 * Os números de celular devem possuir 11 caracteres.
 * O campo de observação possui limite máximo de 200 caracteres.

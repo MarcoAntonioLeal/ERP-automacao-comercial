@@ -1,0 +1,23 @@
+CREATE TABLE formas_recebimento (
+	id INTEGER PRIMARY KEY,
+	codigo TEXT UNIQUE NOT NULL,
+	num_pedido INTEGER NOT NULL UNIQUE,	
+	valor_liquido INTEGER NOT NULL DEFAULT 0 CHECK(valor_liquido >= 0),
+	valor_dinheiro INTEGER CHECK(valor_dinheiro >= 0),
+	valor_pix INTEGER CHECK(valor_pix >= 0),
+	valor_cartao_debito INTEGER CHECK(valor_cartao_debito >= 0),
+	valor_cartao_credito INTEGER CHECK(valor_cartao_credito >= 0),
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id),  	
+)
+
+
+

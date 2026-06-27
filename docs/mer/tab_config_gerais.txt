@@ -1,0 +1,28 @@
+CREATE TABLE config_gerais (
+	id INTEGER PRIMARY KEY CHECK(id = 1),
+	nome_empresa TEXT NOT NULL CHECK(length(nome_empresa) <= 70),
+	tipo_pessoa TEXT NOT NULL CHECK(tipo_pessoa IN ('PF', 'PJ')),
+   	cpf TEXT CHECK(length(cpf) = 11),
+	cnpj TEXT CHECK(length(cnpj) = 14),	
+	cep TEXT CHECK(length(cep) = 8),
+	rua TEXT,
+	bairro TEXT,
+	cidade TEXT,
+	uf TEXT CHECK(length(uf) = 2),
+	telefone_fixo TEXT CHECK(length(telefone_fixo) = 10),
+	celular_01 TEXT CHECK(length(celular_01) = 11),
+	celular_02 TEXT CHECK(length(celular_02) = 11),
+	email_01 TEXT,
+	email_02 TEXT,
+
+	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	criado_por INTEGER NOT NULL,
+	data_atualizacao TEXT, 
+	atualizado_por INTEGER,
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id),
+
+	FOREIGN KEY(atualizado_por)
+	REFERENCES usuarios(id) 
+)
