@@ -87,7 +87,7 @@ Responsável por intermediar as regras de negócio entre as Views e os Models.
 
 O sistema será distribuído como aplicação desktop utilizando Electron.
 
-Dessa forma o usuário poderá instalar e utilizar o ERP diretamente em seu computador, sem necessidade de hospedagem ou acesso constante à internet.
+Dessa forma o usuário poderá instalar e utilizar o sistema de gestão diretamente em seu computador, sem necessidade de hospedagem ou acesso constante à internet.
 
 ---
 
@@ -206,4 +206,4 @@ Este projeto está licenciado sob a licença MIT.
 
 Desenvolvido por Marco Antonio Stanziola Leal Filho.
 
-Projeto de estudo e desenvolvimento de um ERP desktop voltado para automação comercial de pequenos negócios.
+Projeto de estudo e desenvolvimento de um sitema de gestão e automação desktop voltado para automação comercial de pequenos negócios.
