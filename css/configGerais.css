@@ -68,6 +68,16 @@ a {
     }
 }
 
+/*====header usuario logado e data/hora====*/
+header {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5rem;
+    align-self: end;
+    width: 30rem;
+    border-radius: 3px;
+    background-color: var(--cor-09);
+}
 
     /*====Main====*/
 main {flex: 1 0 auto;}

@@ -11,9 +11,7 @@ main {
     flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
-
     width: 80%;
-    margin-top: 1rem;
 
     & img {
         margin: auto;
@@ -125,21 +123,19 @@ input#descricao {width: 30rem;}
     width: 5rem;
 }
 
-.grupo-unidade-venda {
+.grupo-venda {
     display: flex; 
     align-items: center;
     flex-wrap: wrap;
     gap: 5px;
 
-    & .btns-criar-apagar {
+    & .btn-criar-grupo {
         display: inherit;
         justify-content: center;
         align-items: inherit;
         width: 1.8rem;
         height: 1.8rem;
-
-        &.btn-criar {background-color: var(--cor-06);}
-        &.btn-apagar {background-color: var(--cor-07);}
+        background-color: var(--cor-06);
     }
 }
 
@@ -231,39 +227,7 @@ td {
     &.nome-td{width: 85%;}
 }
 
-/*====Fornecefores====*/
-.fornecedores {
-    display: flex; 
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
-
-    & select {
-        width: 15rem;
-        max-height: 4rem;
-        overflow-y: scroll;
-    }
-}
-    
-.btn-fornecedor {
-    display: inherit;
-    justify-content: center;
-    align-items: inherit;
-    width: 3rem;
-    height: 2.1rem;
-
-    border-radius: 5px;
-    border: 1px solid var(--cor-09);
-    background-color: var(--cor-04);
-    transition-duration: .5s;
-
-    &:hover {
-        background-color: var(--cor-09);
-        border: 1px solid var(--cor-04);
-        transition-duration: .5s;
-    }
-}
-
-.accordion-body {
-    background-color: var(--cor-04);
+/*====Fornecedores====*/
+.fornecedores > select {
+    width: 15rem;
 }
