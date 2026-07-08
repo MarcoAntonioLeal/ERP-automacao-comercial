@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="../css/produtos.css">
 </head>
 <body>
+    <header>
+        <div>
+            /*usuario*/
+        </div>
+
+        <div class="me-3">
+            /*data e hora*/
+        </div>
+    </header>
     <main class="container-fluid">
         
         <section id="sec-menu">
@@ -168,6 +177,17 @@
 
             <hr class="linha-vertical">
 
+            <a href="#" class="borda">
+                <img src="#" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Ent. Manual
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+
             <a href="./index.html" class="borda">
                 <img src="../img/pag-inicial.svg" alt="" class="icon-l">
 
@@ -185,10 +205,27 @@
                     X
                 </button>
             </div>
+
+            <div>
+                <strong>Legendas:</strong>
+                <ul class="legenda">
+                    <li>
+                        <img src="../img/lapis.svg" alt="" class="icon-xs"> Editar Produto
+                    </li>
+
+                    <li>
+                        <img src="../img/modulo-fornecedor.svg" alt="" class="icon-xs"> Fornecedores
+                    </li>
+
+                    <li>
+                        <img src="../img/cancelar.svg" alt="" class="icon-xs"> Fluxo de Produtos
+                    </li>
+                </ul>
+            </div>
             
         </section>
 
-        <section class="sec-table">
+        <section class="sec-table ">
             <table class="table table-bordered table-striped table-primary border-secondary">
 
                 <thead>
@@ -200,8 +237,17 @@
                         <th id="width-dias-vendes">Dias s/ Vender</th>
                         <th id="width-custo">Custo</th>
                         <th id="width-valor">Valor</th>
+
                         <th id="width-editar">
                             <img src="../img/lapis.svg" alt="" class="icon-xs">
+                        </th>
+
+                        <th id="width-fornecedores">
+                            <img src="../img/modulo-fornecedor.svg" alt="" class="icon-xs">
+                        </th>
+
+                        <th id="width-fluxo">
+                            <img src="../img/cancelar.svg" alt="" class="icon-xs">
                         </th>
                     </tr>
                 </thead>
@@ -222,20 +268,132 @@
                                 <img src="../img/lapis.svg" alt="" class="icon-xs">
                             </a>
                         </td>
+
+                        <!-- botao de abertura do modal de fornecedores do produto -->
+                        <td class="table-active table-success">
+                           
+                            <img src="../img/modulo-fornecedor.svg" alt="" class="icon-xs" class="btn-modal-fornecedor" data-bs-toggle="modal" data-bs-target="#fornecedoresProduto">
+
+                        </td>
+
+                        <td class="table-active table-danger">
+                            <a href="./criarProduto.html">
+                                <img src="../img/cancelar.svg" alt="" class="icon-xs">
+                            </a>
+                        </td>
                     </tr>
                     <!--linha de molde-->
                 </tbody>
             </table>
+<!--------------------------------------------------------------------------- Corpo Modal fluxo de produtos ----------------------------------------------------------------------------------->
+            
+
+<!--AQUI-->
+
+
+
+<!--------------------------------------------------------------------------- Corpo Modal fornecedores desse produtos ----------------------------------------------------------------------------------->
+            <div class="modal fade" id="fornecedoresProduto" tabindex="-1" aria-labelledby="fornecedores-produto" aria-hidden="true" data-bs-backdrop="static">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+            
+                            <h1 class="modal-title fs-5">
+                                Fornecedores desse Produto
+                            </h1>
+            
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                        <div class="modal-body">
+                                                    
+                            <!-- acordeao para forcecedores desse produto -->
+                            <div class="accordion" id="accordionFornecedores"> <!-- o id="accordionFornecedores" terá de ser repetido em cada data-bs-parent="#accordionFornecedores" -->
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fornecedor01" aria-expanded="false" aria-controls="collapseOne">
+                                            Fornecedor 01  <!-- Aqui entrará o nome do fornecedor  -->                 <!-- o data-bs-target="#fornecedor01 terá de ser dinâmico pelo nome do fornecedor -->
+                                        </button>
+                                    </h2>
+            
+                                    <div id="fornecedor01" class="accordion-collapse collapse" data-bs-parent="#accordionFornecedores">
+                                        <div class="accordion-body">
+            
+                                            <!--linha de molde-->
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Dia Entrada</th>
+                                                        <th>Quant.</th>
+                                                        <th>Custo</th>
+                                                        <th>Nº da Nota</th>
+                                                    </tr>
+                                                </thead>
+            
+                                                <tbody>
+                                                    <tr>
+                                                        <td>09/06/2026</td>
+                                                        <td>100</td>
+                                                        <td>6,35</td>
+                                                        <td>18613</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--linha de molde-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- acordeão para forcecedores desse produto -->
+            
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fornecedor02" aria-expanded="false" aria-controls="collapseTwo">
+                                            Fornecedor 02
+                                        </button>
+                                    </h2>
+                                                                
+                                    <div id="fornecedor02" class="accordion-collapse collapse" data-bs-parent="#accordionFornecedores">
+                                        <div class="accordion-body">
+                                            <!--linha de molde-->
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Dia Entrada</th>
+                                                        <th>Quant.</th>
+                                                        <th>Custo</th>
+                                                        <th>Nº da Nota</th>
+                                                    </tr>
+                                                </thead>
+            
+                                                <tbody>
+                                                    <tr>
+                                                        <td>09/06/2026</td>
+                                                        <td>100</td>
+                                                        <td>6,35</td>
+                                                        <td>18613</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--linha de molde-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-
+    
     <footer>
         <img src="../img/logo.svg" alt="Logo" class="icon-m me-2"> 
         <span class="fs-4 text-logo">Say-System</span>
     </footer>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+    
     <script src="../js/produtos.js"></script>
 </body>
 </html>
