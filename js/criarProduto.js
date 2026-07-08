@@ -1,8 +1,6 @@
 // -- tooltip -- //
 const btnTooltipGrupo = document.querySelector('.tooltip-criar-grupo')
-const btnTooltipFornecedores = document.querySelector('.tooltip-fornecedores')
 new bootstrap.Tooltip(btnTooltipGrupo)
-new bootstrap.Tooltip(btnTooltipFornecedores)
 
 const modalGrupo = document.getElementById('staticGrupo')
 
@@ -14,15 +12,31 @@ modalGrupo.addEventListener('hide.bs.modal', () => {
 })
 
 
+// -- habilitando botao ENTER como principal -- //
+document.addEventListener('keydown', element => {
+
+    if(element.key === 'Enter') {
+        element.key === 'Tab'
+
+        console.log('oi')
+    }
+    console.log(element)
+})
+
+
 // -- menu -- //
+const todosOsInputs = document.querySelectorAll('input, textarea, select')
+const inputDescricaoProduto = document.querySelector('#descricao')
+const statusAtivo = document.querySelector('#ativo-inativo')
+const estoque = document.querySelector('#estoque')
+const custo = document.querySelector('#custo')
+const preco = document.querySelector('#preco')
+const margem = document.querySelector('#margem')
+
 
 //menu ao abrir o modulo
 const btnExcluir = document.querySelector('.btn-excluir')
 btnExcluir.classList.add('disabled')
-
-const todosOsInputs = document.querySelectorAll('input, textarea, select')
-const inputDescricaoProduto = document.querySelector('#descricao')
-const statusAtivo = document.querySelector('#ativo-inativo')
 
 document.addEventListener('click', event => {
     
@@ -35,8 +49,12 @@ document.addEventListener('click', event => {
     if(btnMenuData === 'novo') {
         btnExcluir.classList.add('disabled')
         todosOsInputs.forEach(element => element.value = '')
+
         unidadeVenda.value = 'un'
         statusAtivo.checked = true
+        estoque.value = 0
+        custo.value = 0
+
         inputDescricaoProduto.focus()
     
     //salvar
@@ -51,6 +69,25 @@ document.addEventListener('click', event => {
 })
 
 
+// -- validação do value para aceitar somente numeros -- // 
+let inputNumeros = document.querySelectorAll('#cod-barras, #estoque')
+let inputNumerosPontoVirgula = document.querySelectorAll(' #custo, #margem, #preco')
+
+inputNumeros.forEach(element => {
+    element.addEventListener('input', num => {
+        num.target.value = num.target.value.replace(/\D/g, '')
+    })
+})
+
+
+// -- validação do value para aceitar somente numeros e ponto -- // 
+inputNumerosPontoVirgula.forEach(element => {
+    element.addEventListener('input', num => {
+        num.target.value = num.target.value.replace(/[^0-9.]|^\./g, '').replace(/\.(?=.*\.)/g, '')
+    })
+})
+
+
 // -- validação do value do campo de grupos -- // 
 const inputGrupos = document.querySelector('#grupo')
 const grupoOptions = document.querySelectorAll('#grupos option')
@@ -61,13 +98,6 @@ inputGrupos.addEventListener('change', () => {
     if(!grupoValue.includes(inputGrupos.value)) {
         inputGrupos.value = ''
     }
-})
-
-const btnApagarUnVenda = document.querySelector('.btn-apagar')
-const unidadeVenda = document.querySelector('select')
-
-btnApagarUnVenda.addEventListener('click', () => {
-    unidadeVenda.value = ''
 })
 
 
@@ -87,8 +117,8 @@ const btnExcluirGrupo = document.querySelector('.btn-excluir-grupo')
 const nomeGrupo = document.querySelector('#nomeGrupo')
 const grupo = document.querySelectorAll('.grupo')
 
-//ao entrar no modulo
-const btnAbrirModalGrupo = document.querySelector('.btn-criar')
+//ao entrar no modulo de grupo
+const btnAbrirModalGrupo = document.querySelector('.btn-criar-grupo')
 btnAbrirModalGrupo.addEventListener('click', () => {
 
     add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, nomeGrupo)
@@ -106,7 +136,7 @@ document.addEventListener('click', event => {
 
     const btnMenuGrupoData = btnMenuGrupo.dataset.btnMenuGrupo
 
-    //novo
+    //novo grupo
     if(btnMenuGrupoData === 'novo') {
         remove_disabled(btnCancelarGrupo, nomeGrupo)
         add_disabled(btnNovoGrupo, btnExcluirGrupo)
@@ -114,7 +144,7 @@ document.addEventListener('click', event => {
         grupo.forEach(element => element.classList.add('disabled'))
         nomeGrupo.focus()
         
-    //cancelar
+    //cancelar grupo
     } else if(btnMenuGrupoData === 'cancelar') {
 
         add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, nomeGrupo)
@@ -125,7 +155,7 @@ document.addEventListener('click', event => {
         grupo.forEach(element => element.checked = '')
         grupo.forEach(element => element.classList.remove('disabled'))
         
-    //salvar
+    //salvar grupo
     } else if(btnMenuGrupoData === 'salvar') {
         remove_disabled(btnNovoGrupo)
         grupo.forEach(element => element.classList.remove('disabled'))
@@ -134,7 +164,7 @@ document.addEventListener('click', event => {
         
         add_disabled(btnSalvarGrupo, btnCancelarGrupo, nomeGrupo)
 
-    //excluir
+    //excluir grupo
     } else if(btnMenuGrupoData === 'excluir') {
         remove_disabled(btnNovoGrupo)
 
@@ -152,7 +182,7 @@ grupo.forEach(event => {
     })
 })
 
-//evento para liberar o botao de salvar
+//evento para liberar o botao de salvar de grupo
 nomeGrupo.addEventListener('input', () => {
     if(nomeGrupo.value.trim() === '') {
         add_disabled(btnSalvarGrupo)
@@ -163,36 +193,31 @@ nomeGrupo.addEventListener('input', () => {
 
 
 // -- validação do preco e margem de lucro -- //
-const custo = document.querySelector('#custo')
-const preco = document.querySelector('#preco')
-const margem = document.querySelector('#margem')
+document.addEventListener('input', event => {
 
-/*function custoMargemPreco(custo = 0, preco = 0, margem = 0) {
-    const custoProduto = Math.round((preco * 100) / margem).toFixed(2)
-    const precoProduto = Math.round((custo * margem) / 100).toFixed(2)
-    const margemProduto = Math.round( ((preco * 100) / custo) - 100 ).toFixed(2)
-
-    return {custoProduto, precoProduto, margemProduto}
-}*/
-
-/*
-document.addEventListener('change', event => {
     const valorProduto = event.target.closest('.calcValorProduto')
 
     if(!valorProduto) return
 
     const calcValorProduto = valorProduto.dataset.preco
 
-    if(calcValorProduto === 'custo') {
-        margem.value = Math.round( ((preco.value || 0 * 100) / custo.value || 0) - 100 ).toFixed(2)
-        preco.value = Math.round((custo.value || 0 * margem.value || 0) / 100).toFixed(2)
+    const custoValueFloatPonto = Number(custo.value)
+    const precoValueFloatPonto = Number(preco.value)
+    const margemValueFloatPonto = Number(margem.value)
 
-    } else if(calcValorProduto === 'margem') {
-        custo.value = Math.round((preco.value || 0 * 100) / margem.value || 0).toFixed(2)
-        preco.value = Math.round((custo.value || 0 * margem.value || 0) / 100).toFixed(2)
+    const novoPreco = (custoValueFloatPonto + (margemValueFloatPonto * custoValueFloatPonto) / 100).toFixed(2)
+    const novaMargem = (((precoValueFloatPonto * 100) / custoValueFloatPonto) - 100).toFixed(2)
+
+    if(custo.value == 0) return margem.value = ''
+    
+    //controle de valores de custo, margem e preço
+    if(calcValorProduto === 'margem') {
+        preco.value = novoPreco
 
     } else if(calcValorProduto === 'preco') {
-        custo.value = Math.round((preco.value || 0 * 100) / margem.value || 0).toFixed(2)
-        margem.value = Math.round( ((preco.value || 0 * 100) / custo.value || 0) - 100 ).toFixed(2)
+        
+
+    } else if (calcValorProduto === 'custo') {
+        preco.value = novoPreco
     }
-})*/
+})
