@@ -6,7 +6,7 @@ Cadastro e gerenciamento dos clientes do sistema.
 
 ## Valores de Caracteres
 
-* O nome possui limite máximo de 70 caracteres.
+* O nome possui limite máximo de 150 caracteres.
 * O CPF deve possuir 11 caracteres.
 * O CNPJ deve possuir 14 caracteres.
 * O CEP deve possuir 8 caracteres.
@@ -31,8 +31,9 @@ Cadastro e gerenciamento dos clientes do sistema.
 * O CPF e o CNPJ não poderão ser utilizados simultaneamente no mesmo cadastro.
 * O CPF, CNPJ, CEP e números de telefone deverão ser armazenados apenas com caracteres numéricos, sem utilização de ".", "-", "/", "(", ")" ou quaisquer outros caracteres especiais.
 * Clientes podem ser cadastrados como ativos ou inativos.
-* Clientes inativos não devem estar disponíveis para seleção em vendas.
-* Clientes podem ser excluídos do sistema.
+* Por padrão o cliente é criado como ativo 
+* Clientes inativos não deverão estar disponíveis para seleção durante a criação de pedidos de venda ou orçamentos.
+* Clientes poderão ser excluídos apenas quando não possuírem vínculos com outros registros do sistema.
 * Recomenda-se a inativação em vez da exclusão para preservar o histórico de associações e movimentações.
 * O código do cliente será utilizado como identificador de negócio do sistema.
 * O ID será utilizado exclusivamente para relacionamentos internos do banco de dados.

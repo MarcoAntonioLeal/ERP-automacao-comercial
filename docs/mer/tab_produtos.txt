@@ -1,7 +1,7 @@
 CREATE TABLE produtos (
 	id INTEGER PRIMARY KEY,
    	codigo TEXT UNIQUE NOT NULL,
-   	nome TEXT NOT NULL CHECK(length(nome) <= 55),
+   	nome TEXT NOT NULL CHECK(length(nome) <= 100),
    	cod_barras TEXT UNIQUE CHECK(length(cod_barras) BETWEEN 8 AND 14),
    	estoque REAL NOT NULL DEFAULT 0,
    	custo INTEGER NOT NULL DEFAULT 0 CHECK(custo >= 0),

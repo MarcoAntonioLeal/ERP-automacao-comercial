@@ -6,7 +6,7 @@ Cadastro e gerenciamento dos fornecedores do sistema.
 
 ## Valores de Caracteres
 
-* O nome possui limite máximo de 70 caracteres.
+* O nome possui limite máximo de 150 caracteres.
 * O representante possui limite máximo de 30 caracteres.
 * O CPF deve possuir 11 caracteres.
 * O CNPJ deve possuir 14 caracteres.
@@ -26,12 +26,22 @@ Cadastro e gerenciamento dos fornecedores do sistema.
 
 ## Regras de Negócio
 
+### Para cadastro manual
+
 * Um fornecedor não poderá ser cadastrado com código duplicado.
 * O fornecedor deverá ser cadastrado como PF (Pessoa Física) ou PJ (Pessoa Jurídica).
 * O CPF e o CNPJ não poderão ser utilizados simultaneamente no mesmo cadastro.
 * O CPF, CNPJ, CEP e números de telefone deverão ser armazenados apenas com caracteres numéricos, sem utilização de ".", "-", "/", "(", ")" ou quaisquer outros caracteres especiais.
 * O representante é opcional e identifica a pessoa de contato do fornecedor.
+
+### Para cadastro por importação de NF-e (XML)
+
+* O fornecedor poderá ser cadastrado automaticamente durante a importação de uma NF-e (XML). Caso já exista um fornecedor cadastrado com o mesmo CPF ou CNPJ, o sistema utilizará o cadastro existente, não criando um novo registro.
+
+### Configurações para ambos os cadastros
+
 * Fornecedores podem ser cadastrados como ativos ou inativos.
+* Por padrão o fornecedor é criado como ativo 
 * Fornecedores inativos não devem estar disponíveis para seleção no cadastro de produtos.
 * Um fornecedor pode estar associado a vários produtos.
 * Um produto pode possuir apenas um fornecedor principal cadastrado.
@@ -51,3 +61,4 @@ Cadastro e gerenciamento dos fornecedores do sistema.
 * Todos os campos deverão receber tratamento de remoção de espaços em branco antes e depois dos dados (trim).
 * Todos os campos deverão receber tratamento para armazenamento em letras maiúsculas (uppercase).
 * Os limites definidos nos CHECK(length()) deverão permanecer sincronizados com os limites configurados nos campos do frontend.
+
