@@ -26,6 +26,7 @@ Cadastro e gerenciamento dos produtos do sistema.
 * O campo grupo_id referencia a tabela de grupos através de chave estrangeira.
 * A chave estrangeira de grupo utiliza a configuração ON DELETE SET NULL, permitindo a exclusão do grupo sem excluir os produtos associados.
 * Quando um grupo for excluído, os produtos vinculados permanecerão cadastrados e terão o campo grupo_id definido como NULL.
+* O campo unidade_venda_id referencia a tabela de unidades de venda por meio de chave estrangeira
 * O campo fornecedor_id referencia a tabela de fornecedores por meio de chave estrangeira
 * As chaves estrangeiras criado_por e atualizado_por referenciam os usuários responsáveis pela criação e atualização do registro.
 
@@ -46,10 +47,10 @@ Cadastro e gerenciamento dos produtos do sistema.
 * Produtos inativos não deverão estar disponíveis para seleção durante a criação de pedidos de venda ou orçamentos.
 * Produtos poderão ser excluídos apenas quando não possuírem vínculos com outros registros do sistema.
 * Recomenda-se a inativação em vez da exclusão para preservar o histórico de associações e movimentações.
-* Todos os campos que possuem valor padrão (DEFAULT) serão preenchidos automaticamente em seus respectivos campos no momento da criação de um novo produto, sendo:
+* Todos os campos que possuem valor padrão (DEFAULT) serão preenchidos automaticamente pelo sistema durante a criação de um novo produto, sendo:
 	* Estoque = 0
 	* Custo = 0
-	* Unidade = 'UN'
+* Todo produto deverá estar vinculado a uma unidade de venda cadastrada no sistema.
 * O código do produto será utilizado como identificador de negócio do sistema.
 * O ID será utilizado exclusivamente para relacionamentos internos do banco de dados.
 

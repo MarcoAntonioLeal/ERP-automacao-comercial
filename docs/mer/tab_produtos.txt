@@ -6,15 +6,18 @@ CREATE TABLE produtos (
    	estoque REAL NOT NULL DEFAULT 0,
    	custo INTEGER NOT NULL DEFAULT 0 CHECK(custo >= 0),
    	valor_venda INTEGER NOT NULL CHECK(valor_venda > 0),
-   	ativo integer not null default 1 CHECK(ativo IN (0, 1)),
-   	grupo_id integer,
-	unidade_venda text not null default 'UN' CHECK(unidade_venda IN ('UN','KG','ML','PC','M')),
-	fornecedor_id integer, 
+   	ativo integer NOT NULL DEFAULT 1 CHECK(ativo IN (0, 1)),
+   	grupo_id INTEGER,
+	unidade_venda_id INTEGER NOT NULL, 
+	fornecedor_id INTEGER, 
 	observacao text CHECK(length(observacao) <= 100),
 	data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	criado_por INTEGER NOT NULL,
 	data_atualizacao TEXT, 
 	atualizado_por INTEGER,
+
+	FOREIGN KEY(unidade_venda_id)
+	REFERENCES unidades_venda(id),
 
    	FOREIGN KEY(grupo_id)
    	REFERENCES grupos(id)

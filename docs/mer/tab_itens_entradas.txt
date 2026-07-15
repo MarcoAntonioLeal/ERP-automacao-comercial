@@ -1,0 +1,31 @@
+CREATE TABLE itens_entradas (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+	criado_por INTEGER NOT NULL,
+	produto_id INTEGER,
+	nota_entrada_id INTEGER NOT NULL,
+	codigo_prod TEXT NOT NULL,
+	nome TEXT NOT NULL CHECK(length(nome) <= 100),
+	cod_barras TEXT CHECK(length(cod_barras) BETWEEN 8 AND 14),	
+	unidade_venda_id INTEGER NOT NULL,
+	valor_unidade INTEGER NOT NULL CHECK(valor_unidade > 0),
+	quantidade REAL NOT NULL CHECK(quantidade > 0),
+	valor_total INTEGER NOT NULL CHECK(valor_total > 0),
+	valor_frete INTEGER CHECK(valor_frete >= 0),
+	valor_seguro INTEGER CHECK(valor_seguro >= 0),
+	outras_despesas INTEGER CHECK(outras_despesas >= 0),
+	valor_desconto INTEGER CHECK(valor_desconto >= 0),
+	custo INTEGER CHECK(custo >= 0),
+
+	FOREIGN KEY(produto_id)
+    	REFERENCES produtos(id),
+
+	FOREIGN KEY(unidade_venda_id)
+    	REFERENCES unidades_venda(id),
+
+	FOREIGN KEY(nota_entrada_id)
+    	REFERENCES notas_entradas(id),
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id)
+)

@@ -1,0 +1,19 @@
+CREATE TABLE notas_entradas (
+	id INTEGER PRIMARY KEY,
+   	codigo TEXT UNIQUE NOT NULL,
+	fornecedor_id INTEGER,
+	numero_nota TEXT NOT NULL,
+	serie TEXT NOT NULL,
+	data_emissao TEXT NOT NULL,
+	data_entrada TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	nome TEXT NOT NULL CHECK(length(nome) <= 150),
+	valor_total INTEGER NOT NULL CHECK(valor_total >= 0),
+	chave_acesso TEXT UNIQUE NOT NULL,
+	criado_por INTEGER NOT NULL,
+
+	FOREIGN KEY(fornecedor_id)
+    	REFERENCES fornecedores(id),
+
+	FOREIGN KEY(criado_por)
+	REFERENCES usuarios(id)
+)
