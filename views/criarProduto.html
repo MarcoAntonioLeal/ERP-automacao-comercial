@@ -16,10 +16,6 @@
         <div>
             /*usuario*/
         </div>
-
-        <div class="me-3">
-            /*data e hora*/
-        </div>
     </header>
 
      <main class="container">
@@ -139,7 +135,7 @@
                         <input type="text" name="custo" id="custo" autocomplete="off" data-preco = "custo" maxlength="6" class="calcValorProduto" pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais" value="0"> <!--Aqui no value colocar no ejs <%- valor | 0 %>-->
 
                         <label for="margem" class="ms-4">Margem em % :</label>
-                        <input type="text" name="margem" id="margem" autocomplete="off" data-preco = "margem" maxlength="6" class="calcValorProduto" pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
+                        <input type="text" name="margem" id="margem" autocomplete="off" data-preco = "margem" maxlength="6" class="calcValorProduto" pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais | Margem do produto não pode ser negativa">
 
                         <label for="preco" class="ms-4">Preço:</label>
                         <input type="text" name="preco" id="preco" autocomplete="off" data-preco="preco" maxlength="7" class="calcValorProduto" required pattern="\d+([.,]\d{1,2})?" title="Números inteiros ou com no máximo duas casas decimais">
@@ -147,111 +143,112 @@
                 
                     <hr>
 
-                    <div class="grupo-venda">
+                    <div class="grupo-unidade-venda">
 
-                        <div class="grupo-venda">
+                        <!--------------------------------------- GRUPOS ----------------------------------------------->
 
-                            <label for="grupo">Grupos:</label>
-                            <input list="grupos" name="grupo" id="grupo" autocomplete="off">
-                            <datalist id="grupos">
-                            <!--linha de molde-->
-                                <option value="blusas"></option>
-                                <option value="bolsas"></option>
-                            <!--linha de molde-->
-                            </datalist>
+                        <label for="grupo">Grupos:</label>
+                        <input list="grupos" name="grupo" id="grupo" autocomplete="off">
+                        <datalist id="grupos">
+                        <!--linha de molde-->
+                            <option value="blusas"></option>
+                            <option value="bolsas"></option>
+                        <!--linha de molde-->
+                        </datalist>
 
-                            <!--botão modal para criacao de grupo-->
-                            <button type="button" class="btn btn-criar-grupo tooltip-criar-grupo" data-bs-toggle="modal" data-bs-target="#staticGrupo" data-bs-placement="top" data-bs-title="criar novo grupo">
+                        <!--botão modal para criacao de grupo-->
+                        <button type="button" class="btn btn-criar-grupo-unidade-venda action-grupo" data-bs-toggle="modal" data-bs-target="#staticGrupo" data-bs-placement="top">
 
-                                <img src="../img/+.svg" alt="" class="icon-xs">
+                            <img src="../img/+.svg" alt="" class="icon-xs">
 
-                            </button> 
+                        </button> 
 
-                            <!-- Modal para criar novo grupo--> 
-                            <div class="modal fade" id="staticGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="grupoLabel" aria-hidden="true">
+                        <!-- Modal para criar novo grupo--> 
+                        <div class="modal fade" id="staticGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="grupoLabel" aria-hidden="true">
                                 
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-4" id="grupoLabel">
-                                                Grupos
-                                            </h1>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-4" id="grupoLabel">
+                                            Grupos
+                                        </h1>
 
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
 
-                                        <div class="modal-body">
+                                    <div class="modal-body">
 
-                                            <!--Modal Menu-->
-                                            <section id="sec-modal-menu">
+                                        <!--Modal menu do grupo-->
+                                        <section class="sec-modal-menu">
 
-                                                <button type="button" class="borda btn-novo-grupo btn-menu-grupo" data-btn-menu-grupo="novo">
-                                                    <img src="../img/grupo.svg" alt="" class="icon-s">
+                                            <button type="button" class="borda btn-novo-grupo btn-menu-grupo" data-btn-menu-grupo="novo">
+                                                <img src="../img/grupo.svg" alt="" class="icon-s">
 
-                                                    <div>
-                                                        <hr>
-                                                        Novo
-                                                    </div>
-                                                </button>
+                                                <div>
+                                                    <hr>
+                                                    Novo
+                                                </div>
+                                            </button>
 
-                                                <hr class="linha-modal-vertical">
+                                            <hr class="linha-modal-vertical">
 
-                                                 <button type="button" class="borda btn-cancelar-grupo btn-menu-grupo" data-btn-menu-grupo="cancelar">
-                                                    <img src="../img/cancelar.svg" alt="" class="icon-s">
+                                            <button type="button" class="borda btn-cancelar-grupo btn-menu-grupo" data-btn-menu-grupo="cancelar">
+                                                <img src="../img/cancelar.svg" alt="" class="icon-s">
 
-                                                    <div>
-                                                        <hr>
-                                                        Cancelar
-                                                    </div>
-                                                </button>
+                                                <div>
+                                                    <hr>
+                                                    Cancelar
+                                                </div>
+                                            </button>
 
-                                                <hr class="linha-modal-vertical">
+                                            <hr class="linha-modal-vertical">
 
-                                                <button type="button" class="borda btn-salvar-grupo btn-menu-grupo" data-btn-menu-grupo="salvar">
-                                                    <img src="../img/salvar.svg" alt="" class="icon-s">
+                                            <button type="button" class="borda btn-salvar-grupo btn-menu-grupo" data-btn-menu-grupo="salvar">
+                                                <img src="../img/salvar.svg" alt="" class="icon-s">
 
-                                                    <div>
-                                                        <hr>
-                                                        Salvar
-                                                    </div>
-                                                </button>
+                                                <div>
+                                                    <hr>
+                                                    Salvar
+                                                </div>
+                                            </button>
 
-                                                <hr class="linha-modal-vertical">
+                                            <hr class="linha-modal-vertical">
 
-                                                <button type="button" class="borda btn-excluir-grupo btn-menu-grupo" data-btn-menu-grupo="excluir">
-                                                    <img src="../img/excluir.svg" alt="" class="icon-s">
+                                            <button type="button" class="borda btn-excluir-grupo btn-menu-grupo" data-btn-menu-grupo="excluir">
+                                                <img src="../img/excluir.svg" alt="" class="icon-s">
 
-                                                    <div>
-                                                        <hr>
-                                                        Excluir
-                                                    </div>
-                                                </button>
-                                            </section>   
-                                        </div>
+                                                <div>
+                                                    <hr>
+                                                    Excluir
+                                                </div>
+                                            </button>
+                                        </section>   
+                                    </div>
 
-                                        <div class="modal-footer footer-modal-grupo">
-                                            <section>
-                                                <input type="text" name="nomeGrupo" id="nomeGrupo" autocomplete="off" maxlength="18" placeholder="grupo...">
-                                            </section>
+                                    <div class="modal-footer footer-modal-grupo">
+                                        <section>
+                                            <input type="text" name="nomeGrupo" id="nomeGrupo" autocomplete="off" maxlength="18" placeholder="grupo...">
+                                        </section>
 
-                                            <section class="sec-modal-table">
-                                                <table class="table table-hover table-bordered border-primary">
-                                                    <!--linha de molde-->
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" name="grupo-value" class="grupo">
-                                                        </td>
-                                                        <td class="id-td">01</td>
-                                                        <td class="nome-td">grupo 1</td>
-                                                    </tr>
-                                                    <!--linha de molde-->
-                                                </table>
-                                            </section>
-                                        </div>
+                                        <section class="sec-modal-table">
+                                            <table class="table table-striped">
+                                                <!--linha de molde-->
+                                                <tr>
+                                                    <td>
+                                                        <input type="radio" name="grupo-value" class="grupo">
+                                                    </td>
+                                                    <td class="id-td">01</td>
+                                                    <td class="nome-td">grupo 1</td>
+                                                </tr>
+                                                <!--linha de molde-->
+                                            </table>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <!--------------------------------------- UNIDADES DE VENDA ----------------------------------------------->
                 
                         <div>
                             <label for="unidadeVenda" class="ms-4">Unidade Venda:</label>
@@ -261,7 +258,99 @@
                                 <option value="kg">l</option>
                                 <option value="ml">ml</option>
                                 <option value="m">m</option>
-                            </select>
+                            </select>  
+                        </div>
+
+                        <!--botão modal para criacao de unidade de venda-->
+                        <button type="button" class="btn btn-criar-grupo-unidade-venda action-unidade-venda" data-bs-toggle="modal" data-bs-target="#staticUnidadeVenda" data-bs-placement="top">
+
+                            <img src="../img/+.svg" alt="" class="icon-xs">
+
+                        </button> 
+
+                        <!--Modal para criar nova unidade de venda--> 
+                        <div class="modal fade" id="staticUnidadeVenda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="unidadeVendaLabel" aria-hidden="true">
+                                
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-4" id="unidadeVendaLabel">
+                                            Unidades de Venda
+                                        </h1>
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <!--Modal menu unidade de venda-->
+                                        <section class="sec-modal-menu">
+
+                                            <button type="button" class="borda btn-nova-unidadeVenda btn-menu-unidadeVenda" data-btn-unidade-venda="novo">
+                                                <img src="../img/grupo.svg" alt="" class="icon-s">
+
+                                                <div>
+                                                    <hr>
+                                                    Novo
+                                                </div>
+                                            </button>
+
+                                            <hr class="linha-modal-vertical">
+
+                                                <button type="button" class="borda btn-cancelar-unidadeVenda btn-menu-unidadeVenda" data-btn-unidade-venda="cancelar">
+                                                <img src="../img/cancelar.svg" alt="" class="icon-s">
+
+                                                <div>
+                                                    <hr>
+                                                    Cancelar
+                                                </div>
+                                            </button>
+
+                                            <hr class="linha-modal-vertical">
+
+                                            <button type="button" class="borda btn-salvar-unidadeVenda btn-menu-unidadeVenda" data-btn-unidade-venda="salvar">
+                                                <img src="../img/salvar.svg" alt="" class="icon-s">
+
+                                                <div>
+                                                    <hr>
+                                                    Salvar
+                                                </div>
+                                            </button>
+
+                                            <hr class="linha-modal-vertical">
+
+                                            <button type="button" class="borda btn-excluir-unidadeVenda btn-menu-unidadeVenda" data-btn-unidade-venda="excluir">
+                                                <img src="../img/excluir.svg" alt="" class="icon-s">
+
+                                                <div>
+                                                    <hr>
+                                                    Excluir
+                                                </div>
+                                            </button>
+                                        </section>   
+                                    </div>
+
+                                    <div class="modal-footer footer-modal-grupo">
+                                        <section>
+                                            <input type="text" name="nomeUnidadeVenda" id="nomeUnidadeVenda" autocomplete="off" maxlength="18" placeholder="Unidade de Venda...">
+                                        </section>
+
+                                        <section class="sec-modal-table">
+                                            <table class="table table-striped">
+                                                <!--linha de molde-->
+                                                <tr>
+                                                    <td>
+                                                        <input type="radio" name="grupo-value" class="unidadeVenda">
+                                                    </td>
+                                                    <td class="id-td">01</td>
+                                                    <td class="nome-td">UN</td>
+                                                </tr>
+                                                <!--linha de molde-->
+                                            </table>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="fornecedores">
@@ -273,7 +362,7 @@
                                 <option value="fornecedor 02">fornecedor 02</option>
                             <!--linha de molde-->
                             </select>
-                        </div> 
+                        </div>
                     </div>
 
                     <br>
@@ -294,11 +383,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-    <script>
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    </script>
 
     <script src="../js/criarProduto.js"></script>
 </body>                              

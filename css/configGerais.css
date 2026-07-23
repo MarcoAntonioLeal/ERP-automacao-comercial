@@ -68,13 +68,12 @@ a {
     }
 }
 
-/*====header usuario logado e data/hora====*/
+/*====header usuario logado====*/
 header {
     display: flex;
-    justify-content: space-evenly;
-    gap: 5rem;
     align-self: end;
-    width: 30rem;
+    justify-content: center;
+    width: 20rem;
     border-radius: 3px;
     background-color: var(--cor-09);
 }

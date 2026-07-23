@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meus Fornecedores</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/configGerais.css">
+    <link rel="stylesheet" href="../css/prodForCli.css">
+    <link rel="stylesheet" href="../css/clientes.css">
+</head>
+<body>
+    <header>
+        <div>
+            /*usuario*/
+        </div>
+    </header>
+    <main class="container-fluid">
+        
+        <section id="sec-menu">
+            <a href="./criarFornecedor.html" class="borda">
+                <img src="../img/novo-fornecedor.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Novo
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+            
+            <!--botão modal pesquisar-->
+            <button type="button" class="borda" id="btnPesquisarCliente" data-bs-toggle="modal" data-bs-target="#staticPesquisar">
+                <img src="../img/pesquisar.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Pesquisar
+                </div>
+            </button>
+
+            <!--modal pesquisar-->
+            <div class="modal fade" id="staticPesquisar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticPesquisarLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4 modal-header-title" id="staticPesquisarLabel">Filtros de Pesquisa</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body modal-body-pesquisar">
+                            <div class="modal-filtro-de-busca">
+                                <div>
+                                    <input type="radio" name="busca-fornecedor" id="todosFornecedores" checked>
+                                    <label for="todosFornecedores">Todos os fornecedores</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-fornecedor" id="fornecedoresAtivos">
+                                    <label for="fornecedoresAtivos">Fornecedores ativos</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-fornecedor" id="fornecedoresInativos">
+                                    <label for="fornecedoresInativos">Fornecedores inativos</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-fornecedor" id="fornecedorJuridica">
+                                    <label for="fornecedorJuridica">Fornecedores só pessoa jurídica</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="busca-fornecedor" id="fornecedorFisica">
+                                    <label for="fornecedorFisica">Fornecedores só pessoa física</label>
+                                </div>
+                            </div>
+
+                            <hr>
+                            
+                            <div >
+                                <div class="modal-order-filtro">
+                                    <div>
+                                        <input type="radio" name="order-filtro" id="filtroPorCodigoForn" checked>
+                                        <label for="filtroPorCodigoForn">Filtro por código</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="order-filtro" id="filtroPorAlfabeticaForn">
+                                        <label for="filtroPorAlfabeticaForn">Filtro por ordem alfabética</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                Aplicar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="linha-vertical">
+
+            <a href="#" class="borda">
+                <img src="../img/baixar-pdf.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Baixar PDF
+                </div>
+            </a>
+
+            <hr class="linha-vertical">
+
+            <a href="./index.html" class="borda">
+                <img src="../img/pag-inicial.svg" alt="" class="icon-l">
+
+                <div>
+                    <hr>
+                    Pg. Inicial
+                </div>
+            </a>
+
+            <div class="input-group busca-elemento">
+
+                <input type="text" class="form-control borda" placeholder="Nome do cliente" aria-label="Nome do cliente" aria-describedby="button-clear" id="campoPesquisarCliente">
+
+                <button class="btn btn-outline-danger" type="button" id="button-clear">
+                    X
+                </button>
+            </div>
+
+            <div>
+                <strong>Legendas:</strong>
+                <ul class="legenda">
+                    <li>
+                        <img src="../img/lapis.svg" alt="" class="icon-xs">Editar Fornecedor
+                    </li>
+                </ul>
+            </div>
+            
+        </section>
+
+        <section class="sec-table ">
+            <table class="table table-striped table-primary border-secondary" style="border-spacing: 2px;">
+
+                <thead>
+                    <tr class="table-secondary">
+                        <th id="width-nome">Nome</th>
+                        <th id="width-codigo">Código</th>
+                        <th id="width-cpf-cnpj">CPF/CNPJ</th>
+                        <th id="width-telefone">Telefone</th>
+                        <th id="width-email">E-mail</th>
+                        <th id="width-ultima-compra">Última Compra</th>
+                        <th id="width-dias-s-comprar">Dias s/ Comp</th>
+
+                        <th id="width-editar">
+                            <img src="../img/lapis.svg" alt="" class="icon-xs">
+                        </th>
+
+                        <th id="width-compras-cliente">
+                            <img src="../img/comprasCliente.svg" alt="" class="icon-s">
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!--linha de molde-->
+                    <tr>
+                        <td class="primeira-coluna">Marco Antonio S. Leal Filho</td>
+                        <td>1</td>
+                        <td>00000000000</td>
+                        <td>22999999999</td>
+                        <td>fri0154592@aluno.firjansenaisesi.com.br</td>
+                        <td>20/04/2026</td>
+                        <td>6</td>
+
+                        <td>
+                            <a href="./criarCliente.html">
+                                <img src="../img/lapis.svg" alt="" class="icon-xs">
+                            </a>
+                        </td>
+
+                        <!-- botao de abertura do modal de fornecedores do produto -->
+                        <td>
+                            <img src="../img/comprasCliente.svg" alt="" class="icon-s" data-bs-toggle="modal" data-bs-target="#fornecedoresProduto">
+                        </td>
+                    </tr>
+                    <!--linha de molde-->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+    <footer>
+        <img src="../img/logo.svg" alt="Logo" class="icon-m me-2"> 
+        <span class="fs-4 text-logo">Say-System</span>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script src="../js/clientes.js"></script>
+</body>
+</html>

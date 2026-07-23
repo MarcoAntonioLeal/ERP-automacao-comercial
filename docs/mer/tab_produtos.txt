@@ -20,8 +20,7 @@ CREATE TABLE produtos (
 	REFERENCES unidades_venda(id),
 
    	FOREIGN KEY(grupo_id)
-   	REFERENCES grupos(id)
-	ON DELETE SET NULL,
+   	REFERENCES grupos(id),
 
 	FOREIGN KEY(criado_por)
 	REFERENCES usuarios(id),

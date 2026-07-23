@@ -19,14 +19,14 @@ document.addEventListener('click', event => {
     }
 })
 
-//para resetar os campos do modal
+//para resetar os campos do modal de pesquisa de produtos
 const modalInputTodosOsProd = document.querySelector('#todosProdutos')
-const modalInputFiltroPorCod = document.querySelector('#filtroPorCodigo')
-const btnPesquisar = document.querySelector('#btnPesquisar')
+const modalInputFiltroPorCodProd = document.querySelector('#filtroPorCodigoProd')
+const btnPesquisarProduto = document.querySelector('#btnPesquisarProduto')
 
-btnPesquisar.addEventListener('click', () => {
+btnPesquisarProduto.addEventListener('click', () => {
     modalInputTodosOsProd.checked = 'true'
-    modalInputFiltroPorCod.checked = 'true'
+    modalInputFiltroPorCodProd.checked = 'true'
     modalBuscaGrupo.value = ''
     modalBuscaFornecedor.value = ''
 })

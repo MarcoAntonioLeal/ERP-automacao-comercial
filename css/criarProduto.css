@@ -41,22 +41,16 @@ main {
     transition-duration: .5s;
 
     &:hover {
-    box-shadow: 3px 3px 3px var(--cor-shadow-hover);
-    transition-duration: .5s;
-    }
+        background-color: var(--cor-04);
+        box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+        transition-duration: .5s;
+    }  
 
     & hr {
         width: 100%;
         margin: auto;
     }
 }
-
-.btn-novo:hover, .btn-novo-grupo:hover {background-color: var(--cor-06) !important;}
-.btn-salvar:hover, .btn-salvar-grupo:hover {background-color: var(--cor-09) !important;}
-.btn-excluir:hover, .btn-excluir-grupo:hover {background-color: var(--cor-07) !important;}
-.btn-cancelar:hover, .btn-cancelar-grupo:hover {background-color: var(--cor-10) !important;}
-.btn-voltar:hover {background-color: var(--cor-04) !important;}
-.btn-pag-incial:hover {background-color: var(--cor-04) !important;}
 
 
 /*====Inputs====*/
@@ -123,13 +117,13 @@ input#descricao {width: 30rem;}
     width: 5rem;
 }
 
-.grupo-venda {
+.grupo-unidade-venda {
     display: flex; 
     align-items: center;
     flex-wrap: wrap;
     gap: 5px;
 
-    & .btn-criar-grupo {
+    & .btn-criar-grupo-unidade-venda {
         display: inherit;
         justify-content: center;
         align-items: inherit;
@@ -156,7 +150,7 @@ textarea {
     font-weight: bold;
 }
 
-#sec-modal-menu {
+.sec-modal-menu {
     display: flex;
     gap: 1.3rem;
 
@@ -173,7 +167,7 @@ textarea {
     border: none; 
 }
 
-#sec-modal-menu > button {
+.sec-modal-menu > button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -188,8 +182,9 @@ textarea {
     transition-duration: .5s;
 
     &:hover {
-    box-shadow: 3px 3px 3px var(--cor-shadow-hover);
-    transition-duration: .5s;
+        background-color: var(--cor-04);
+        box-shadow: 3px 3px 3px var(--cor-shadow-hover);
+        transition-duration: .5s;
     }
 
     & hr {
@@ -203,6 +198,7 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     color: inherit;
+    background-color: var(--cor-04);
 }
 
 .footer-modal-grupo > input {
@@ -217,6 +213,7 @@ textarea {
     border: 1px solid var(--cor-04);
     text-align: center;
     overflow-y: auto;
+    background-color: var(--cor-00);
 }
 
 td {

@@ -50,7 +50,7 @@ main {
     }
 }
 
-.busca-produto {
+.busca-elemento {
     width: 27rem;
     margin: auto;
 
@@ -68,7 +68,7 @@ main {
     }
 }
 
-/*====Tabela====*/
+/*====Tabela de produtos====*/
 .sec-table {
     max-height: 80vh;
     overflow-y: auto;
@@ -81,10 +81,19 @@ thead {
     top: 0;
 }
 
-table, th, td {
+tbody img {
+    cursor: pointer;
+}
+
+table {
     border-collapse: separate;
-    border-spacing: 0;
+    border-spacing: 0; /*esse seletor só incide nas tabelas dos modais*/
     vertical-align: middle;
+    color: inherit !important;
+}
+
+tr, td, th {
+    border-color: var(--cor-04);
     color: inherit !important;
 }
 
@@ -99,14 +108,18 @@ table, th, td {
 #width-fornecedores {width: 1.6%;}
 #width-fluxo {width: 1.6%;}
 
-td:not(.descricao-prod), th:not(.descricao-prod) {
+td:not(.primeira-coluna), th:not(.primeira-coluna) {
     text-align: center;
 }
 
 /*====Modal de filtro de pesquisa====*/
-.modal-header-title {
-    font-weight: bold;
-    color: var(--cor-05);
+.modal-header {
+    border-bottom: 2px solid var(--cor-04);
+
+        & .modal-header-title {
+        font-weight: bold;
+        color: var(--cor-05);
+    }
 }
 
 .modal-body-pesquisar {
@@ -114,10 +127,11 @@ td:not(.descricao-prod), th:not(.descricao-prod) {
     justify-content: space-around;
 
     & hr {
-        width: 1.5px;
+        width: 2px;
         height: 17rem;
+        border-color: var(--cor-04);
         opacity: 100%;
-        background-color: var(--cor-09);
+        background-color: var(--cor-04);
     }
 
     & input {
@@ -158,6 +172,10 @@ select {
     color: inherit;
 }
 
+.modal-footer {
+    border-top: 2px solid var(--cor-04);
+}
+
 /*====Modal de fornecedores do produto====*/
 .modal {
     color: inherit;
@@ -168,10 +186,22 @@ select {
     font-weight: bold;
 }
 
+.modal-body-fornecedores, .modal-body-fluxo{
+    max-height: 65vh;
+    padding-top: 0;
+    overflow-y: auto;
+}
+
 .accordion-body {
     background-color: var(--cor-04);
 
     & .table {
         font-size: 1.05rem;
     }
+}
+
+
+/*====Modal de fluxo de produtos====*/
+.modal-body-fluxo {
+    background-color: var(--cor-04);
 }

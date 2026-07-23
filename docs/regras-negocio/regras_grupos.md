@@ -21,8 +21,7 @@ Cadastro e gerenciamento dos grupos de produtos do sistema.
 
 * Um grupo não poderá ser cadastrado com código duplicado.
 * O nome do grupo não poderá ser cadastrado em duplicidade.
-* O grupo poderá ser excluído mesmo estando vinculado a produtos.
-* Quando um grupo for excluído, os produtos associados permanecerão cadastrados e terão o campo grupo_id definido como NULL.
+* Grupos vinculados a produtos não poderão ser excluídos.
 * O código do grupo será utilizado como identificador de negócio do sistema.
 * O ID será utilizado exclusivamente para relacionamentos internos do banco de dados.
 

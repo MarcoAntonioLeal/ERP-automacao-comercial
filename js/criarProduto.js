@@ -1,19 +1,5 @@
-// -- tooltip -- //
-const btnTooltipGrupo = document.querySelector('.tooltip-criar-grupo')
-new bootstrap.Tooltip(btnTooltipGrupo)
-
-const modalGrupo = document.getElementById('staticGrupo')
-
-modalGrupo.addEventListener('hide.bs.modal', () => {
-    const tooltipGrupo = bootstrap.Tooltip.getInstance(btnTooltipGrupo)
-    tooltipGrupo.hide()
-
-    /*Ainda com problema */
-})
-
-
 // -- habilitando botao ENTER como principal -- //
-document.addEventListener('keydown', element => {
+/*document.addEventListener('keydown', element => {
 
     if(element.key === 'Enter') {
         element.key === 'Tab'
@@ -21,7 +7,7 @@ document.addEventListener('keydown', element => {
         console.log('oi')
     }
     console.log(element)
-})
+})*/
 
 
 // -- menu -- //
@@ -32,6 +18,7 @@ const estoque = document.querySelector('#estoque')
 const custo = document.querySelector('#custo')
 const preco = document.querySelector('#preco')
 const margem = document.querySelector('#margem')
+const CampoUnidadeVenda = document.querySelector('#unidadeVenda')
 
 
 //menu ao abrir o modulo
@@ -50,7 +37,7 @@ document.addEventListener('click', event => {
         btnExcluir.classList.add('disabled')
         todosOsInputs.forEach(element => element.value = '')
 
-        unidadeVenda.value = 'un'
+        CampoUnidadeVenda.value = 'un'
         statusAtivo.checked = true
         estoque.value = 0
         custo.value = 0
@@ -60,6 +47,14 @@ document.addEventListener('click', event => {
     //salvar
     } else if (btnMenuData === 'salvar') {
         const form = document.querySelector('.formCriarProduto')
+
+        if(preco.value == 0) {
+            preco.setCustomValidity('O valor do produto tem de ser maior que 0')
+            preco.reportValidity();
+            return;
+        }
+
+        preco.setCustomValidity('')
         form.requestSubmit()
 
     //excluir
@@ -71,7 +66,7 @@ document.addEventListener('click', event => {
 
 // -- validação do value para aceitar somente numeros -- // 
 let inputNumeros = document.querySelectorAll('#cod-barras, #estoque')
-let inputNumerosPontoVirgula = document.querySelectorAll(' #custo, #margem, #preco')
+let inputNumerosPontoVirgula = document.querySelectorAll('#custo, #margem, #preco')
 
 inputNumeros.forEach(element => {
     element.addEventListener('input', num => {
@@ -87,6 +82,8 @@ inputNumerosPontoVirgula.forEach(element => {
     })
 })
 
+
+/*---------------- Abaixo para grupo ---------------*/
 
 // -- validação do value do campo de grupos -- // 
 const inputGrupos = document.querySelector('#grupo')
@@ -118,7 +115,7 @@ const nomeGrupo = document.querySelector('#nomeGrupo')
 const grupo = document.querySelectorAll('.grupo')
 
 //ao entrar no modulo de grupo
-const btnAbrirModalGrupo = document.querySelector('.btn-criar-grupo')
+const btnAbrirModalGrupo = document.querySelector('.action-grupo')
 btnAbrirModalGrupo.addEventListener('click', () => {
 
     add_disabled(btnCancelarGrupo, btnSalvarGrupo, btnExcluirGrupo, nomeGrupo)
@@ -192,6 +189,91 @@ nomeGrupo.addEventListener('input', () => {
 })
 
 
+/*---------------- Abaixo para unidade de venda ---------------*/
+
+// -- menu unidade de venda -- //
+const btnNovaUnidadeVenda = document.querySelector('.btn-nova-unidadeVenda')
+const btnCancelarUnidadeVenda = document.querySelector('.btn-cancelar-unidadeVenda')
+const btnSalvarUnidadeVenda = document.querySelector('.btn-salvar-unidadeVenda')
+const btnExcluirUnidadeVenda = document.querySelector('.btn-excluir-unidadeVenda ')
+const nomeUnidadeVenda = document.querySelector('#nomeUnidadeVenda')
+const unidadeVenda = document.querySelectorAll('.unidadeVenda')
+
+//ao entrar no modulo de unidade de venda
+const btnAbrirModalUnidadeVenda = document.querySelector('.action-unidade-venda')
+btnAbrirModalUnidadeVenda.addEventListener('click', () => {
+
+    add_disabled(btnCancelarUnidadeVenda, btnSalvarUnidadeVenda, btnExcluirUnidadeVenda, nomeUnidadeVenda)
+
+    nomeUnidadeVenda.value = ''
+
+    remove_disabled(btnNovaUnidadeVenda)
+    unidadeVenda.forEach(element => element.checked = '')
+    unidadeVenda.forEach(element => element.classList.remove('disabled'))
+})
+
+document.addEventListener('click', event => {
+    const btnMenuUnidadeVenda = event.target.closest('.btn-menu-unidadeVenda')
+    if(!btnMenuUnidadeVenda) return
+
+    const btnMenuUnidadeData = btnMenuUnidadeVenda.dataset.btnUnidadeVenda
+
+    //nova unidade de venda
+    if(btnMenuUnidadeData === 'novo') {
+        remove_disabled(btnCancelarUnidadeVenda, nomeUnidadeVenda)
+        add_disabled(btnNovaUnidadeVenda, btnExcluirUnidadeVenda)
+        unidadeVenda.forEach(element => element.checked = '')
+        unidadeVenda.forEach(element => element.classList.add('disabled'))
+        nomeUnidadeVenda.focus()
+        
+    //cancelar unidade de venda
+    } else if(btnMenuUnidadeData === 'cancelar') {
+
+        add_disabled(btnCancelarUnidadeVenda, btnSalvarUnidadeVenda, btnExcluirUnidadeVenda, nomeUnidadeVenda)
+
+        nomeUnidadeVenda.value = ''
+
+        remove_disabled(btnNovaUnidadeVenda)
+        unidadeVenda.forEach(element => element.checked = '')
+        unidadeVenda.forEach(element => element.classList.remove('disabled'))
+        
+    //salvar unidade de venda
+    } else if(btnMenuUnidadeData === 'salvar') {
+        remove_disabled(btnNovaUnidadeVenda)
+        unidadeVenda.forEach(element => element.classList.remove('disabled'))
+        
+        nomeUnidadeVenda.value = ''
+        
+        add_disabled(btnSalvarUnidadeVenda, btnCancelarUnidadeVenda, nomeUnidadeVenda)
+
+    //excluir unidade de venda
+    } else if(btnMenuUnidadeData === 'excluir') {
+        remove_disabled(btnNovaUnidadeVenda)
+
+        unidadeVenda.forEach(element => element.checked = '')
+        
+        add_disabled(btnExcluirUnidadeVenda, btnCancelarUnidadeVenda)
+    }
+})
+
+//input unidade de venda
+unidadeVenda.forEach(event => {
+    event.addEventListener('change', () => {
+        remove_disabled(btnExcluirUnidadeVenda, btnCancelarUnidadeVenda)
+        add_disabled(btnNovaUnidadeVenda)
+    })
+})
+
+//evento para liberar o botao de salvar unidade de venda
+nomeUnidadeVenda.addEventListener('input', () => {
+    if(nomeUnidadeVenda.value.trim() === '') {
+        add_disabled(btnSalvarUnidadeVenda)
+    } else {
+        remove_disabled(btnSalvarUnidadeVenda)
+    }
+})
+
+
 // -- validação do preco e margem de lucro -- //
 document.addEventListener('input', event => {
 
@@ -215,7 +297,7 @@ document.addEventListener('input', event => {
         preco.value = novoPreco
 
     } else if(calcValorProduto === 'preco') {
-        
+        margem.value = novaMargem
 
     } else if (calcValorProduto === 'custo') {
         preco.value = novoPreco
